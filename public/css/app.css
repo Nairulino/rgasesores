@@ -9,7 +9,6 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 #usuario{
   color: indigo;
   font-size: x-large;
@@ -17,12 +16,12 @@
 }
 
 #panel{
-  margin-left: -1.5%;
-  margin-right: -0.5%
+  margin-left: -25.5px;
+  margin-right: -10.5px;
 }
 
 #panel-izq{
-  margin-left: -3%;
+  margin-left: -10px;
 }
 
 #personas-card{

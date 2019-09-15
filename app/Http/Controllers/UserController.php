@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Auth;
 
 class UserController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +56,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        $personas = DB::select('select * from users');
+        $personas = DB::table('users')->paginate(5);
 
         return view('admin.clientes.personasfisicas', ['personas' => $personas]);
     }

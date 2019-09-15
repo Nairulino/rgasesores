@@ -3,7 +3,7 @@
 
 @include('includes.head')
 
-<body>
+<body id="body">
     <div id="app">
         <header>
 

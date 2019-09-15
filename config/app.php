@@ -79,8 +79,10 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-
-    'locale' => 'en',
+    //Inglés
+    //'locale' => 'en',
+    //Español
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,7 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Laraveles\Spanish\SpanishServiceProvider::class,
         /*
          * Package Service Providers...
          */

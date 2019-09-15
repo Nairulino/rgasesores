@@ -10,6 +10,7 @@
                     <th scope="col">Id</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Correo</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,10 +19,12 @@
                     <th scope="row">{{$user->id}} </th>
                     <td>{{$user->name}} </td>
                     <td>{{$user->email}} </td>
+                    <td><button disabled="disabled"></button></td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+            {{$personas->links()}}
     </div>
     
 </div>
