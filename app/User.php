@@ -36,4 +36,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Función para comprobar si es admin con id = 1
+     */
+    public function hasId($id){
+        return User::where('id', $id)->get();
+    }
 }

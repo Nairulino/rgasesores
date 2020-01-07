@@ -26,7 +26,7 @@
                         </div>
                         <a href="#" class="nav-link"> Documentos </a>
                         <a href="#" class="nav-link"> Notificar </a>
-                        <a href="#" class="nav-link"> Añadir nuevo cliente </a>
+                        <a href="{{ route('register') }}" class="nav-link"> Añadir nuevo cliente </a>
                         <a href="#" class="nav-link"> Añadir nueva empresa </a>
                         <a href="#" class="nav-link"> Añadir nueva sociedad </a>
                     </nav>

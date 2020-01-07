@@ -17,7 +17,7 @@ Route::view('/about', 'pages.about')->name('about');
 Route::view('/projects', 'pages.projects')->name('projects');
 Route::view('/contact', 'pages.contact')->name('contact');
 
-Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users', 'UserController@index')->name('users');
