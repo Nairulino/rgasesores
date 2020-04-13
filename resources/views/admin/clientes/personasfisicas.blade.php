@@ -19,7 +19,11 @@
                     <th scope="row">{{$user->id}} </th>
                     <td>{{$user->name}} </td>
                     <td>{{$user->email}} </td>
-                    <td><button disabled="disabled"></button></td>
+                    <td>
+                        <button type="button" class="btn btn-outline-secondary btn-sm">Modificar</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                    </td>
+                    
                 </tr>
             @endforeach
             </tbody>
