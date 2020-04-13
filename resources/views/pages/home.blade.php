@@ -13,7 +13,7 @@
                         <p id="usuario">{{Auth::user()->name}}</p>
                     </div>
                     @if (Auth::user() != null)
-                        @if(Auth::user()->id == 1)
+                        @if(Auth::user()->admin == 1)
                     <nav class="nav flex-column">
                         <a href="#" class="nav-link active"> Resumen </a>
                         <div class="dropdown">

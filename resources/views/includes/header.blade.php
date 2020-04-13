@@ -13,7 +13,7 @@
                     <a class="nav-link active" href="{{route('home')}}"> Inicio </a>
                 </li>
                 @if (Auth::user() != null)
-                    @if(Auth::user()->id != 1)
+                    @if(Auth::user()->admin != 1)
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('users')}}" > Usuarios </a>
                 </li>
@@ -31,11 +31,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                     </li>
-                    {{-- @if (Route::has('register'))
+                    @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                         </li>
-                    @endif --}}
+                    @endif 
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -38,9 +38,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * Función para comprobar si es admin con id = 1
+     * Función para comprobar si es admin con admin = 1
      */
-    public function hasId($id){
-        return User::where('id', $id)->get();
+    public function isAdmin($admin){
+        return User::where('admin', $admin)->get();
     }
 }
