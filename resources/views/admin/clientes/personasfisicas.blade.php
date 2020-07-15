@@ -20,10 +20,15 @@
                     <td>{{$user->name}} </td>
                     <td>{{$user->email}} </td>
                     <td>
-                        <button type="button" class="btn btn-outline-secondary btn-sm">Modificar</button>
-                        <button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                        <a href="{{route('users.edit', $user->id)}}"> 
+                            <button type="button" class="btn btn-outline-secondary btn-sm float-left">Modificar</button>
+                        </a>
+                        <form action="{{route('users.destroy', $user->id)}}" method="post">
+                            {{ method_field('DELETE') }}
+                            @csrf
+                            <button type="submit" class="btn btn-outline-danger btn-sm float-right">Eliminar</button>
+                        </form>
                     </td>
-                    
                 </tr>
             @endforeach
             </tbody>

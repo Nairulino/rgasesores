@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 
 class UserController extends Controller
 {
@@ -92,6 +93,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Auth::user()->id == $id){
+            return redirect()->route('personasfisicas')->with('warning', 'No puedes eliminarte a tí mismo.');
+        }
+
+        $user = User::find($id);
+        if ($user != null) {
+            $user->delete();
+            return redirect()->route('personasfisicas')->with('success', 'El usuario '.$user->name.' ha sido eliminado con éxito.');
+        }else{
+            return redirect()->route('personasfisicas')->with('failure', 'El usuario '.$user->name.' no ha podido ser eliminado.');
+        }
+        
     }
 }

@@ -48,6 +48,7 @@
                     <div class="card-header text-left"> Panel de Administración</div>
                     <div class="fixed-center">
                         <div class="card-body-rg">
+                            @include('partials.alerts')
                             @yield('content-1')
                         </div>
                     </div>   
