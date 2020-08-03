@@ -3,15 +3,17 @@
 
 @include('includes.head')
 
-<body id="body">
-    <div id="app">
+<body id="body"  class="fix-header">
+    <div id="wrapper">
         <header>
 
             @include('includes.header')
 
         </header>
 
-        <main class="py-2">
+        @include('includes.sidebar')
+        
+        <main id="page-wrapper">
             
             @yield('content')
             

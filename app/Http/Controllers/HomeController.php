@@ -27,4 +27,15 @@ class HomeController extends Controller
         return view('pages.home');
     }
 
+
+    /**
+     * Show the User Profile.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function profile()
+    {
+        return view('pages.profile');
+    }
+
 }

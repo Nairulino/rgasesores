@@ -2,58 +2,159 @@
 
 @section('content')
 <div class="container-fluid">
-<div class="row">
-    <div class="col-2">
-        <div class="card" id="panel-izq">
-            <div class="card-header">Administrador</div>
-            <div class="card-body-rg">
-                <div class="container">
-                    <div class="text-center">
-                        <img id="avatar" src="/img/admin.jpg" height="105" width="105">
-                        <p id="usuario">{{Auth::user()->name}}</p>
-                    </div>
-                    @if (Auth::user() != null)
-                        @if(Auth::user()->admin == 1)
-                    <nav class="nav flex-column">
-                        <a href="#" class="nav-link active"> Resumen </a>
-                        <div class="dropdown">
-                            <a href="#" class="nav-link" id="dropdownMenuButton" data-toggle="dropdown"> Clientes </a>
-                            <div class="dropdown-menu">
-                                <a href="{{route('personasfisicas')}}" class="nav-link"> Personas físicas </a>
-                                <a href="#" class="nav-link"> Empresas </a> 
-                                <a href="#" class="nav-link"> Sociedades </a>
-                            </div>        
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Panel de Control</h4> 
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="#">Panel de Control</a></li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <!-- ============================================================== -->
+    <!-- Different data widgets -->
+    <!-- ============================================================== -->
+    <!-- .row -->
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Total Visit</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash"></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">659</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Total Page Views</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash2"></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">869</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 col-xs-12">
+            <div class="white-box analytics-info">
+                <h3 class="box-title">Unique Visitor</h3>
+                <ul class="list-inline two-part">
+                    <li>
+                        <div id="sparklinedash3"></div>
+                    </li>
+                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">911</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--/.row -->
+    <!-- ============================================================== -->
+    <!-- chat-listing & recent comments -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <!-- .col -->
+        <div class="col-md-12 col-lg-8 col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title">Consultas recientes</h3>
+                <div class="comment-center p-t-10">
+                    <div class="comment-body">
+                        <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle">
                         </div>
-                        <a href="#" class="nav-link"> Documentos </a>
-                        <a href="#" class="nav-link"> Notificar </a>
-                        <a href="{{ route('register') }}" class="nav-link"> Añadir nuevo cliente </a>
-                        <a href="#" class="nav-link"> Añadir nueva empresa </a>
-                        <a href="#" class="nav-link"> Añadir nueva sociedad </a>
-                    </nav>
-                        @else
-                    <nav class="nav flex-column">
-                        <a href="#" class="nav-link active"> Resumen </a>
-                        <a href=# class="nav-link"> Mis mensajes </a>
-                        <a href="#" class="nav-link"> Trámites </a>
-                        <a href="#" class="nav-link"> Crear consulta </a>
-                    </nav>
-                        @endif
-                    @endif
+                        <div class="mail-contnet">
+                            <h5>Pavan kumar</h5><span class="time">10:20 AM   20  may 2016</span>
+                            <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Approve</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Reject</a>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        <div class="user-img"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle">
+                        </div>
+                        <div class="mail-contnet">
+                            <h5>Sonu Nigam</h5><span class="time">10:20 AM   20  may 2016</span>
+                            <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span>
+                        </div>
+                    </div>
+                    <div class="comment-body b-none">
+                        <div class="user-img"> <img src="../plugins/images/users/arijit.jpg" alt="user" class="img-circle">
+                        </div>
+                        <div class="mail-contnet">
+                            <h5>Arijit singh</h5><span class="time">10:20 AM   20  may 2016</span>
+                            <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-        <div class="col-10">
-            <div class="card text-center" id="panel">
-                    <div class="card-header text-left"> Panel de Administración</div>
-                    <div class="fixed-center">
-                        <div class="card-body-rg">
-                            @include('partials.alerts')
-                            @yield('content-1')
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="panel">
+                <div class="sk-chat-widgets">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            CHAT LISTING
                         </div>
-                    </div>   
+                        <div class="panel-body">
+                            <ul class="chatonline">
+                                <li>
+                                    <div class="call-chat">
+                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
+                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
+                                    </div>
+                                    <a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <div class="call-chat">
+                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
+                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
+                                    </div>
+                                    <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                </li>
+                                <li>
+                                    <div class="call-chat">
+                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
+                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
+                                    </div>
+                                    <a href="javascript:void(0)"><img src="../plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                </li>
+                                <li>
+                                    <div class="call-chat">
+                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
+                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
+                                    </div>
+                                    <a href="javascript:void(0)"><img src="../plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                </li>
+                                <li>
+                                    <div class="call-chat">
+                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
+                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
+                                    </div>
+                                    <a href="javascript:void(0)"><img src="../plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <div class="call-chat">
+                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
+                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
+                                    </div>
+                                    <a href="javascript:void(0)"><img src="../plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <div class="call-chat">
+                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
+                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
+                                    </div>
+                                    <a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- /.col -->
     </div>
-</div>
+    <!-- /.container-fluid -->
 @endsection

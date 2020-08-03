@@ -1,60 +1,55 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <a class="navbar-brand" href="{{ url('/') }}">
-           <!-- <img src="img/Logo8x6mm.gif" class="rounded">-->
-            {{ config('app.name', 'Laravel') }}
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{route('home')}}"> Inicio </a>
-                </li>
-                @if (Auth::user() != null)
-                    @if(Auth::user()->admin != 1)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('users')}}" > Usuarios </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="{{url('consulta')}}" >Consultas</a>
-                </li>
-                    @endif
-                @endif   
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
-                        </li>
-                    @endif 
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                {{ __('Cerrar sesión') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+<nav class="navbar navbar-default navbar-static-top m-b-0">
+    <div class="navbar-header">
+        <div class="top-left-part">
+            <!-- Logo -->
+            <a class="logo" href="{{ url('/') }}">
+                <!-- Logo icon image, you can use font-icon also --><b>
+                    <!--This is light logo icon--><img src="{{ URL::asset('img/RGAsesores.gif') }}" height="55" alt="home"
+                        class="light-logo" />
+                </b>
+                </span> </a>
+        </div>
+        <!-- /Logo -->
+        <ul class="nav navbar-top-links navbar-right pull-right">
+            <li>
+                <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+                    <input type="text" placeholder="Buscar..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
+                    <img src="{{ URL::asset('img/admin.jpg') }}" alt="user-img" width="36" class="img-circle">
+                    <b class="hidden-xs">{{Auth::user()->name}}</b><span class="caret"></span> </a>
+                <ul class="dropdown-menu dropdown-user animated flipInY">
+                    <li>
+                        <div class="dw-user-box">
+                            <div class="u-img"><img src="{{ URL::asset('img/admin.jpg') }}" alt="user" /></div>
+                            <div class="u-text"><h4>{{Auth::user()->name}}</h4><p class="text-muted">{{Auth::user()->email}}</p></div>
                         </div>
                     </li>
-                @endguest
-            </ul>
-        </div>
-    </nav>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{{route('profile')}}"><i class="ti-user"></i> Mi perfil</a></li>
+                    <li><a href="#"><i class="ti-wallet"></i> Mis archivos</a></li>
+                    <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#"><i class="ti-settings"></i> Ajustes de cuenta</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                          <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>{{ __('Cerrar sesión') }}
+                        </a>
+            
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            
+            <!-- /.dropdown -->
+        </ul>
+    </div>
+    <!-- /.navbar-header -->
+    <!-- /.navbar-top-links -->
+    <!-- /.navbar-static-side -->
+</nav>

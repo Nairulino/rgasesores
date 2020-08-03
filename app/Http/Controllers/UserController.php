@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -17,6 +18,22 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
+    }
+
+    /**
+     * Get a validator for an update user request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['string', 'max:255'],
+            'email' => ['string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['integer','numeric'],
+            'description' => ['string','max:500']
+        ]);
     }
 
     /**
@@ -57,7 +74,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        $personas = DB::table('users')->paginate(5);
+        $personas = DB::table('users')->paginate(7);
 
         return view('admin.clientes.personasfisicas', ['personas' => $personas]);
     }
@@ -70,7 +87,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('admin.clientes.updateusers', ['user' => $user]);
     }
 
     /**
@@ -82,7 +101,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validator($request->all())->validate();
+
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->description = $request->description;
+
+        $user->save();
+
+        return redirect()->route('personasfisicas')->with('success', 'El usuario ' .$user->name.' ha sido modificado con éxito');
+
     }
 
     /**
