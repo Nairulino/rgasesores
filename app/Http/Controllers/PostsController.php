@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class PostsController extends Controller
 {
@@ -34,7 +37,22 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $id = Auth::user()->id;
+
+        $user = User::find($id);
+
+        if($file = $request->file('file')){
+            $name = $file->getClientOriginalName();
+
+            $file->move('img', $name);
+        }
+
+        $user->img = $name;
+
+        $user->save();
+
+        return view('pages.documents');
     }
 
     /**

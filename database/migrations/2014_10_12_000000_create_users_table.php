@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('phone');
             $table->string('description');
             $table->integer('admin')->default(0);
+            $table->string('img')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -26,7 +26,7 @@
                 </ul>
           </li>
           <li>
-              <a href="#" class="waves-effect"><i class="fa fa-folder fa-fw" aria-hidden="true"></i>Documentos</a>
+              <a href="{{route('documents')}}" class="waves-effect"><i class="fa fa-folder fa-fw" aria-hidden="true"></i>Documentos</a>
           </li>
           <li>
               <a href="{{route('register')}}" class="waves-effect"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Añadir nuevo cliente</a>

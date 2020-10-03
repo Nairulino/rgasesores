@@ -21,7 +21,7 @@
               <div class="user-bg"> <img width="100%" alt="user" src="{{ URL::asset('../plugins/images/large/img1.jpg') }}">
                   <div class="overlay-box">
                       <div class="user-content">
-                          <a href="javascript:void(0)"><img src="{{ URL::asset('../plugins/images/users/genu.jpg') }}"
+                          <a href="javascript:void(0)"><img src="{{ URL::asset('img') }}/{{Auth::user()->img}}"
                                   class="thumb-lg img-circle" alt="img"></a>
                           <h4 class="text-white">{{Auth::user()->name}}</h4>
                           <h5 class="text-white">{{Auth::user()->email}}</h5>

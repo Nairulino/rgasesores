@@ -18,7 +18,7 @@
     <!-- Different data widgets -->
     <!-- ============================================================== -->
     <!-- .row -->
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-lg-4 col-sm-6 col-xs-12">
             <div class="white-box analytics-info">
                 <h3 class="box-title">Total Visit</h3>
@@ -52,7 +52,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!--/.row -->
     <!-- ============================================================== -->
     <!-- chat-listing & recent comments -->
@@ -67,24 +67,27 @@
                         <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle">
                         </div>
                         <div class="mail-contnet">
-                            <h5>Pavan kumar</h5><span class="time">10:20 AM   20  may 2016</span>
-                            <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Approve</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Reject</a>
+                            <h5>Ricardo Ejemplo Consulta</h5><span class="time">10:20 AM   20  may 2020</span>
+                            <br/><span class="mail-desc">Necesito información sobre lo que puede costar que me tramiteis la renta. Gracias, un saludo.</span> 
+                            <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Contestar</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Rechazar</a>
                         </div>
                     </div>
                     <div class="comment-body">
                         <div class="user-img"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle">
                         </div>
                         <div class="mail-contnet">
-                            <h5>Sonu Nigam</h5><span class="time">10:20 AM   20  may 2016</span>
-                            <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span>
+                            <h5>Sonu Ejemplo Consulta</h5><span class="time">10:20 AM   12  jun 2020</span>
+                            <br/><span class="mail-desc">¿Qué documentos son los necesarios para poder solicitar el ingreso mínimo vital?</span>
+                            <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Contestar</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Rechazar</a>
                         </div>
                     </div>
                     <div class="comment-body b-none">
                         <div class="user-img"> <img src="../plugins/images/users/arijit.jpg" alt="user" class="img-circle">
                         </div>
                         <div class="mail-contnet">
-                            <h5>Arijit singh</h5><span class="time">10:20 AM   20  may 2016</span>
-                            <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span>
+                            <h5>Taruk Ejemplo Consulta</h5><span class="time">10:20 AM   20  jun 2020</span>
+                            <br/><span class="mail-desc">¿Es necesario presentar el pasaporte para viajar fuera de España?</span>
+                            <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Contestar</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Rechazar</a>
                         </div>
                     </div>
                 </div>
@@ -95,7 +98,7 @@
                 <div class="sk-chat-widgets">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            CHAT LISTING
+                            USUARIOS RECIENTES 
                         </div>
                         <div class="panel-body">
                             <ul class="chatonline">

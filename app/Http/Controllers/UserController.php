@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -101,7 +101,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validator($request->all())->validate();
+        // $this->validator($request->all())->validate();
 
         $user = User::find($id);
 

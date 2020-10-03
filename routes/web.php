@@ -16,6 +16,7 @@ Route::get('/', 'WelcomeController@welcome')->name('welcome');
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/projects', 'pages.projects')->name('projects');
 Route::view('/contact', 'pages.contact')->name('contact');
+Route::view('/documents', 'pages.documents')->name('documents');
 
 Auth::routes();
 
@@ -26,3 +27,5 @@ Route::get('/personasfisicas', 'UserController@show')->name('personasfisicas');
 Route::get('/edit/user/{user}', 'UserController@edit')->name('edit');
 
 Route::resource('/users', 'UserController');
+
+Route::resource('upload', 'PostsController');

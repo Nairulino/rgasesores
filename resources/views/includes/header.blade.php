@@ -17,12 +17,12 @@
             </li>
             <li class="dropdown">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
-                    <img src="{{ URL::asset('img/admin.jpg') }}" alt="user-img" width="36" class="img-circle">
+                    <img src="{{ URL::asset('img') }}/{{ Auth::user()->img }}" alt="user-img" width="36" class="img-circle">
                     <b class="hidden-xs">{{Auth::user()->name}}</b><span class="caret"></span> </a>
                 <ul class="dropdown-menu dropdown-user animated flipInY">
                     <li>
                         <div class="dw-user-box">
-                            <div class="u-img"><img src="{{ URL::asset('img/admin.jpg') }}" alt="user" /></div>
+                        <div class="u-img"><img src="{{ URL::asset('img') }}/{{ Auth::user()->img }}" alt="user" /></div>
                             <div class="u-text"><h4>{{Auth::user()->name}}</h4><p class="text-muted">{{Auth::user()->email}}</p></div>
                         </div>
                     </li>
