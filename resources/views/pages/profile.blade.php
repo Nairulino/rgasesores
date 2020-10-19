@@ -13,6 +13,7 @@
           </ol>
       </div>
   </div>
+  @include('partials.alerts')
   <!-- /.row -->
   <!-- .row -->
   <div class="row">
@@ -21,7 +22,7 @@
               <div class="user-bg"> <img width="100%" alt="user" src="{{ URL::asset('../plugins/images/large/img1.jpg') }}">
                   <div class="overlay-box">
                       <div class="user-content">
-                          <a href="javascript:void(0)"><img src="{{ URL::asset('img') }}/{{Auth::user()->img}}"
+                          <a href="javascript:void(0)"><img src="{{Storage::url(Auth::user()->img)}}"
                                   class="thumb-lg img-circle" alt="img"></a>
                           <h4 class="text-white">{{Auth::user()->name}}</h4>
                           <h5 class="text-white">{{Auth::user()->email}}</h5>
@@ -41,6 +42,24 @@
                       <p class="text-danger"><i class="ti-dribbble"></i></p>
                       <h1>556</h1>
                   </div>
+              </div>
+          </div>
+          <div>
+            <div class="white-box">
+                <h3>Cambiar la imagen de perfil</h3>
+                <br>
+                {!! Form::open(['method'=>'post', 'action'=>'PostsController@store', 'files'=>true, 'class'=>'form-horizontal form-material']) !!}
+                <div class="form-group">
+                    <div class="col-md-12">
+                    {!! Form::file('profile-picture', ['class'=>'form-control-file']) !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                <div class="col-md-12">
+                    {!! Form::submit('Cambiar', ['class'=>'btn btn-success']) !!}
+                </div>
+                </div>
+                {!! Form::close() !!}
               </div>
           </div>
       </div>

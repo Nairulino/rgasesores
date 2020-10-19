@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Provider\bg_BG\PhoneNumber;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -11,13 +12,17 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@admin.es',
-            'password' => bcrypt('pruebas1'),
-            'admin' => '1',
-            'phone' => '666333999',
-            'description' => ''
-        ]);
+        for( $i = 0; $i < 50; $i++){
+            $name = Str::random(10);
+            DB::table('users')->insert([
+                'name' => $name,
+                'email' => $name . '@correo.es',
+                'password' => Hash::make('pruebas1'),
+                'phone' => rand(111111111,999999999),
+                'description' => '',
+                'img' => 'public/img/profile/default.png'
+            ]);
+        }
+        
     }
 }

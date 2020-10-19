@@ -16,7 +16,10 @@ class admin extends Seeder
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@admin.es',
-            'password' => Hash::make('pruebas1'),
+            'password' => bcrypt('pruebas1'),
+            'admin' => '1',
+            'phone' => '666333999',
+            'description' => 'Soy el administrador'
         ]);
     }
 }

@@ -6,9 +6,22 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin']);
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -42,17 +55,32 @@ class PostsController extends Controller
 
         $user = User::find($id);
 
-        if($file = $request->file('file')){
-            $name = $file->getClientOriginalName();
+        if($file = $request->file('profile-picture')){
 
-            $file->move('img', $name);
+            $ext = $file->getClientOriginalExtension();
+            $name = "profile-img-" . $user->name . "-" . $user->id . "." .$ext;
+
+            $user->img = $file->store('public/img/profile', ['name'=>$name]);
+
+            $user->save();
+
+            return redirect('profile')->with('alert', '¡Imagen de perfil actualizada!');
         }
 
-        $user->img = $name;
+        if($file = $request->file('documents')){
 
-        $user->save();
+            $name = $file->getClientOriginalName();
+            $path = $file->store('public/documents');
+            $desc = $request->desc;
 
-        return view('pages.documents');
+            DB::table('documents')->insert(
+                ['id_user' => $id, 'desc_doc' => $desc, 'path' => $path]
+            );
+
+            return redirect('documents')->with('success', '¡El documento se ha subido correctamente!');
+        }
+
+        return redirect('profile')->with('warning', 'No se ha seleccionado ninguna imagen.');
     }
 
     /**
@@ -86,7 +114,22 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $user = User::find($id);
+
+        if($file = $request->file('profile-picture')){
+
+            $ext = $file->getClientOriginalExtension();
+            $name = "profile-img-" . $user->name . "-" . $user->id . "." .$ext;
+
+            $user->img = $file->store('public/img/profile', ['name'=>$name]);
+
+            $user->save();
+
+            return redirect()->route('edit', $user)->with('success', '¡Imagen de perfil actualizada!');
+        }
+
+        return redirect()->route('edit', $user)->with('warning', 'No se ha seleccionado ninguna imagen.' );
     }
 
     /**

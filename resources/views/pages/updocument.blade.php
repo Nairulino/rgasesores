@@ -4,12 +4,12 @@
 <div class="container-fluid">
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Documentos</h4>
+            <h4 class="page-title">Subir Documento</h4>
         </div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
             <ol class="breadcrumb">
                 <li><a href="{{route('home')}}">Panel de Control</a></li>
-                <li class="active">Documentos</li>
+                <li class="active">Subir Documento</li>
             </ol>
         </div>
     </div>
@@ -27,7 +27,6 @@
                 <div class="form-group">
                   <input type="file" name="documents" id="documents" class="form-control-file">
                 </div>
-                
                 <div class="form-group">
                   <label>Descripción</label>
                   <br>
@@ -38,7 +37,6 @@
                   <input type="submit" value="Subir Documento" class="btn btn-success">
                 </div>
               </form>
-
             </div>
         </div>
     </div>

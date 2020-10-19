@@ -26,7 +26,10 @@
                 </ul>
           </li>
           <li>
-              <a href="{{route('documents')}}" class="waves-effect"><i class="fa fa-folder fa-fw" aria-hidden="true"></i>Documentos</a>
+              <a href="{{route('updocument')}}" class="waves-effect"><i class="fa fa-file-pdf-o fa-fw" aria-hidden="true"></i>Subir Documento</a>
+          </li>
+          <li>
+            <a href="{{route('documents.index')}}" class="waves-effect"><i class="fa fa-folder fa-fw" aria-hidden="true"></i>Documentos</a>
           </li>
           <li>
               <a href="{{route('register')}}" class="waves-effect"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Añadir nuevo cliente</a>

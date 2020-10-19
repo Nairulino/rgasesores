@@ -101,7 +101,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $this->validator($request->all())->validate();
+        $this->validator($request->all())->validate();
 
         $user = User::find($id);
 
@@ -109,6 +109,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->description = $request->description;
+        
 
         $user->save();
 

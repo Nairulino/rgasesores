@@ -24,4 +24,8 @@
     </button>
   </div>
 @endif
-
+@if (session('alert'))
+  <div class="alert alert-success alert-rounded"> <img src="{{Storage::url(Auth::user()->img)}}" width="30" class="rounded-circle" alt="img"> {{ session('alert') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+  </div>
+@endif

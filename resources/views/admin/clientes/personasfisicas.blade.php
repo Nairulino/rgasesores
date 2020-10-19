@@ -15,6 +15,7 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
+    @include('partials.alerts')
     <!-- /row -->
     <div class="row">
         <div class="col-sm-12">
