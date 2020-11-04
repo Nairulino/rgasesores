@@ -30,7 +30,6 @@ class UserController extends Controller
     {
         return Validator::make($data, [
             'name' => ['string', 'max:255'],
-            'email' => ['string', 'email', 'max:255', 'unique:users'],
             'phone' => ['integer','numeric'],
             'description' => ['string','max:500']
         ]);
