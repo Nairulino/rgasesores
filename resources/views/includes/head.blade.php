@@ -3,7 +3,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Nairulino">
     <link rel="icon" type="image/gif" sizes="16x16" href="img/Logo8x6mm.gif">
 
     <!-- CSRF Token -->
@@ -13,17 +13,13 @@
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{ URL::asset('bootstrap/dist/css/bootstrap.min.css') }}">
-    {{-- <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     <!-- Menu CSS -->
     <link rel="stylesheet" href="{{ URL::asset('../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css') }}">
-    {{-- <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet"> --}}
     <!-- animation CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
-    {{-- <link href="css/animate.css" rel="stylesheet"> --}}
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
-    {{-- <link href="css/style.css" rel="stylesheet"> --}}
     <!-- color CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/colors/default.css') }}">
-    {{-- <link href="css/colors/default.css" id="theme" rel="stylesheet"> --}}
+
 </head>

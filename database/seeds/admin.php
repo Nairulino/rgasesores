@@ -16,10 +16,11 @@ class admin extends Seeder
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@rgasesores.es',
-            'password' => bcrypt('pruebas1'),
+            'password' => Hash::make('pruebas1'),
             'admin' => '1',
             'phone' => '666333999',
-            'description' => 'Soy el administrador'
+            'description' => 'Soy el administrador',
+            'img' => 'public/img/profile/default.png'
         ]);
     }
 }

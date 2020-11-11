@@ -7,7 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentsController extends Controller
 {
@@ -29,7 +30,11 @@ class DocumentsController extends Controller
      */
     public function index()
     {
-        return view('pages.documents');
+        $documents = DB::table('documents')
+                        ->join('users', 'documents.id_user', '=', 'users.id')
+                        ->paginate(7);
+
+        return view('pages.documents', ['documents' => $documents]);
     }
 
     /**
@@ -68,11 +73,37 @@ class DocumentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function download($id)
     {
-        $documents = DB::table('documents');
+        $file = DB::select('select path from documents where id_doc = ?', [$id]);
 
-        return view('pages.documents', ['personas' => $documents]);
+        return Storage::download($file[0]->path);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $file = DB::select('select path from documents where id_doc = ?', [$id]);
+
+        return Storage::response($file[0]->path);
+    }
+
+    /**
+     * Display the list of file associated to the user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showMyDocs($user)
+    {
+        $id = Auth::user()->id;
+        $documents = DB::table('documents')->where('id_user', $id)
+                        ->paginate(7);
+
+        return view('pages.mydocs', ['documents' => $documents]);
     }
 
     /**

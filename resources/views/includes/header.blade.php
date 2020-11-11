@@ -29,7 +29,7 @@
                     </li>
                     <li role="separator" class="divider"></li>
                     <li><a href="{{route('profile')}}"><i class="ti-user"></i> Mi perfil</a></li>
-                    <li><a href="#"><i class="ti-wallet"></i> Mis archivos</a></li>
+                    <li><a href="{{route('documents.mydocs', Auth::user()->name)}}"><i class="ti-wallet"></i> Mis archivos</a></li>
                     <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#"><i class="ti-settings"></i> Ajustes de cuenta</a></li>

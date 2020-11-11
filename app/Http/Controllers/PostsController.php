@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
@@ -74,7 +75,7 @@ class PostsController extends Controller
             $desc = $request->desc;
 
             DB::table('documents')->insert(
-                ['id_user' => $id, 'desc_doc' => $desc, 'path' => $path]
+                ['id_user' => $id, 'desc_doc' => $desc, 'path' => $path, 'created_at' => Carbon::now()]
             );
 
             return redirect('documents')->with('success', '¡El documento se ha subido correctamente!');

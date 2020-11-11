@@ -1,11 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Reestablecer contraseña</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="{{route('home')}}">Panel de Control</a></li>
+                <li class="active">Reestablecer contraseña</li>
+            </ol>
+        </div>
+    </div>
+    @include('partials.alerts')
+    <div class="row">
+        <div class="col-md-12-col-xs-8">
+            <div class="white-box">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reestablecer contraseña') }}</div>
+                <h3 class="card-header">{{ __('Reestablecer contraseña') }}</h3>
+                <br>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -40,6 +57,9 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
             </div>
         </div>
     </div>

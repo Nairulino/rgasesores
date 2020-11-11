@@ -4,12 +4,12 @@
 <div class="container-fluid">
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Documentos</h4>
+            <h4 class="page-title">Mis documentos</h4>
         </div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
             <ol class="breadcrumb">
                 <li><a href="{{route('home')}}">Panel de Control</a></li>
-                <li class="active">Documentos</li>
+                <li class="active">Mis documentos</li>
             </ol>
         </div>
     </div>
@@ -19,14 +19,13 @@
     <div class="row">
         <div class="col-md-12 col-xs-8">
             <div class="white-box">
-                <h3>Documentos</h3>
+                <h3>Mis documentos</h3>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Usuario</th>
                                 <th scope="col">Fecha creación</th>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -39,7 +38,6 @@
                             <tr>
                                 <th scope="row">{{$cont++}} </th>
                                 <td>{{$document->desc_doc}} </td>
-                                <td>{{$document->name}} </td>
                                 <td>{{$document->created_at}}</td>
                                 <td>
                                     <div class="btn-list" style="display: flex">

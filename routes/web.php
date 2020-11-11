@@ -26,8 +26,9 @@ Route::get('/users', 'UserController@index')->name('users');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/personasfisicas', 'UserController@show')->name('personasfisicas');
 Route::get('/edit/user/{user}', 'UserController@edit')->name('edit');
-Route::get('/documents', 'DocumentsController@show')->name('documents');
 Route::get('/updocument', 'DocumentsController@updocument')->name('updocument');
+Route::get('/documents/{document}/download', 'DocumentsController@download')->name('documents.download');
+Route::get('/documents/{user}/mydocs', 'DocumentsController@showMyDocs')->name('documents.mydocs');
 
 Route::resource('/users', 'UserController');
 Route::resource('/documents', 'DocumentsController');
