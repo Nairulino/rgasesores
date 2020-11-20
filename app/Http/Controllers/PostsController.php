@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PostsController extends Controller
 {
@@ -20,6 +21,20 @@ class PostsController extends Controller
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
+    }
+
+    
+    /**
+     * Get a validator for an update user request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'desc' => ['string', 'max:255']
+        ]);
     }
 
     
@@ -69,6 +84,8 @@ class PostsController extends Controller
         }
 
         if($file = $request->file('documents')){
+
+            $this->validator($request->all())->validate();
 
             $name = $file->getClientOriginalName();
             $path = $file->store('public/documents');

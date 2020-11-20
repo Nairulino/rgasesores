@@ -31,6 +31,11 @@
                   <label>Descripción</label>
                   <br>
                   <textarea id="desc" name="desc" rows="2" class="form-control" style="width: 35rem"></textarea>
+                  @error('desc')
+                    <span class="invalid-feedback" role="alert" style="color:red">
+                        {{ 'Debes indicar una descripción para el archivo' }}
+                    </span>
+                  @enderror
                 </div>
 
                 <div class="form-group">
