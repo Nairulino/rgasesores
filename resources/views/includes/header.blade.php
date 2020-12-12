@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <div class="top-left-part">
             <!-- Logo -->
-            <a class="logo" href="{{ url('/') }}">
+            <a class="logo" href="{{ route('home') }}">
                 <!-- Logo icon image, you can use font-icon also --><b>
                     <!--This is light logo icon--><img src="{{ URL::asset('img/RGAsesores.gif') }}" height="55" alt="home"
                         class="light-logo" />

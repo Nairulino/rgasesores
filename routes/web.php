@@ -13,6 +13,7 @@
 
 Route::get('/', 'WelcomeController@welcome')->name('welcome');
 
+
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/projects', 'pages.projects')->name('projects');
 Route::view('/contact', 'pages.contact')->name('contact');
@@ -22,6 +23,7 @@ Route::view('/contact', 'pages.contact')->name('contact');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/app', 'WelcomeController@login')->name('app');
 Route::get('/users', 'UserController@index')->name('users');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/personasfisicas', 'UserController@show')->name('personasfisicas');
