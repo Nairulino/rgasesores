@@ -384,6 +384,8 @@ h4, .h4 {
 
 h5, .h5 {
   font-size: 1.25rem;
+  padding-top: 1vh;
+  padding-left: 4vh;
 }
 
 h6, .h6 {
@@ -10267,6 +10269,11 @@ header.masthead::before {
 
 div.header{
   position: relative;
+}
+
+h4.faqs{
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .accordion-icons .icon:before {
