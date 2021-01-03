@@ -218,15 +218,15 @@
                                 meses se pagan 50 euros aproximadamente, los 6 siguientes se aplica una bonificación del
                                 50% y los últimos 6 meses tendrás que pagar solo el 80% de la cuota. Las bonificaciones
                                 se aplican sobre la base de cotización mínima.
-                                <br>
+                                <br><br>
                                 Los que no alcanzan estas edades, tienen una bonificación adicional. Podrán pagar solo
-                                el 70% de la cuota durante un año más. En total, tienen 30 meses de bonificación
-                                <br>
+                                el 70% de la cuota durante un año más. En total, tienen 30 meses de bonificación.
+                                <br><br>
                                 Además la tarifa plana de los 6 primeros meses se ha reducido a 50 euros, en lugar de
                                 53,24. Esto en el supuesto de que se cotice por la cotización más baja. Si optas por una
                                 cotización más alta, tendrás derecho al 80% de bonificación los primeros meses.
                                 Otras ventajas que afectan a la tarifa plana:
-                                <br>
+                                <br><br>
                                 <ul>
                                     <li>Los autónomos que contraten trabajadores también podrán acogerse a esta
                                         bonificación.
@@ -260,47 +260,59 @@
             <!-- Contact Section Form-->
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                    <form action="{{route('contact')}}" method="post" id="contactForm" name="sentMessage"
+                        novalidate="novalidate">
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Nombre</label>
-                                <input class="form-control" id="name" type="text" placeholder="Nombre"
-                                    required="required" data-validation-required-message="Introduzca tu nombre." />
-                                <p class="help-block text-danger"></p>
+                                <input class="form-control @error('nombre') is-invalid @enderror" name="nombre"
+                                    id="nombre" type="text" placeholder="Nombre" required="required"
+                                    value="{{ old('nombre') }}" />
+                                @error('nombre')
+                                <div class="alert alert-danger"> {{ $message }} </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Correo Electrónico</label>
-                                <input class="form-control" id="email" type="email" placeholder="Correo Electrónico"
-                                    required="required"
-                                    data-validation-required-message="Introduzca tu dirección de correo electrónico." />
-                                <p class="help-block text-danger"></p>
+                                <input class="form-control @error('correo') is-invalid @enderror" name="correo"
+                                    id="correo" type="correo" placeholder="Correo Electrónico" required="required"
+                                    value="{{ old('correo') }}" />
+                                @error('correo')
+                                <div class="alert alert-danger"> {{ $message }} </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Teléfono</label>
-                                <input class="form-control" id="phone" type="tel" placeholder="Teléfono"
-                                    required="required"
-                                    data-validation-required-message="Introduzca tu número de teléfono." />
-                                <p class="help-block text-danger"></p>
+                                <input class="form-control @error('telefono') is-invalid @enderror" name="telefono"
+                                    id="telefono" type="tel" placeholder="Teléfono" required="required"
+                                    value="{{ old('telefono') }}" />
+                                @error('telefono')
+                                <div class="alert alert-danger"> {{ $message }} </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="form-group floating-label-form-group controls mb-0 pb-2">
                                 <label>Mensaje</label>
-                                <textarea class="form-control" id="message" rows="5" placeholder="Mensaje"
-                                    required="required"
-                                    data-validation-required-message="Introduzca un mensaje."></textarea>
-                                <p class="help-block text-danger"></p>
+                                <textarea class="form-control @error('mensaje') is-invalid @enderror" name="mensaje"
+                                    id="mensaje" rows="5" placeholder="Mensaje">{{ old('mensaje') }}</textarea>
+
+                                @error('mensaje')
+                                <div class="alert alert-danger"> {{ $message }} </div>
+                                @enderror
                             </div>
                         </div>
                         <br />
                         <div id="success"></div>
                         <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton"
                                 type="submit">Enviar</button></div>
+
+                        @csrf
+
                     </form>
                 </div>
             </div>
@@ -558,9 +570,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Third party plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <!-- Contact form JS-->
-    <script src="assets/mail/jqBootstrapValidation.js"></script>
-    <script src="assets/mail/contact_me.js"></script>
     <!-- Core theme JS-->
     <script src="js/landingpage.js"></script>
 </body>

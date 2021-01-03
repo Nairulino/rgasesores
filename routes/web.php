@@ -12,11 +12,11 @@
 */
 
 Route::get('/', 'WelcomeController@welcome')->name('welcome');
-
+Route::post('/', 'ContactFormController@store')->name('contact');
 
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/projects', 'pages.projects')->name('projects');
-Route::view('/contact', 'pages.contact')->name('contact');
+// Route::view('/contact', 'pages.contact')->name('contact');
 // Route::view('/documents', 'pages.documents')->name('documents');
 // Route::view('/updocument', 'pages.updocument')->name('updocument');
 
