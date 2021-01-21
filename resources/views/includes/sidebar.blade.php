@@ -34,6 +34,15 @@
           <li>
               <a href="{{route('register')}}" class="waves-effect"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Añadir nuevo cliente</a>
           </li>
+          <li>
+            <a href="{{route('register')}}" class="waves-effect"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Añadir nueva empresa</a>
+          </li>
+          <li>
+            <a href="{{route('register')}}" class="waves-effect"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Añadir nueva sociedad</a>
+          </li>
+          <li>
+            <a href="{{route('calendar')}}" class="waves-effect"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Calendario</a>
+          </li>
           @endif
       </ul>
   </div>

@@ -79,6 +79,16 @@ class UserController extends Controller
     }
 
     /**
+     * Display the calendar.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showCalendar()
+    {
+        return view('pages.calendar');
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

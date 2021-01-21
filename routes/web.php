@@ -35,3 +35,9 @@ Route::get('/documents/{user}/mydocs', 'DocumentsController@showMyDocs')->name('
 Route::resource('/users', 'UserController');
 Route::resource('/documents', 'DocumentsController');
 Route::resource('upload', 'PostsController');
+
+//fullcalender
+Route::get('/calendar','FullCalendarEventMasterController@index')->name('calendar');;
+Route::post('/calendar/create','FullCalendarEventMasterController@create')->name('calendar.create');
+Route::post('/calendar/update','FullCalendarEventMasterController@update');
+Route::post('/calendar/delete','FullCalendarEventMasterController@destroy');
