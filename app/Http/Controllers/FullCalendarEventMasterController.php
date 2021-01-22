@@ -25,7 +25,7 @@ class FullCalendarEventMasterController extends Controller
             'start' => $request->start,
             'end' => $request->end
         ];
-        $event = Event::insert($insertArr);
+        $event = Event::create($insertArr);
         return Response::json($event);
     }
 
@@ -41,5 +41,14 @@ class FullCalendarEventMasterController extends Controller
     {
         $event = Event::where('id', $request->id)->delete();
         return Response::json($event);
+    }
+
+
+    public function getLastID(Request $request)
+    {
+        if (request()->ajax()) {
+            $data = DB::table('events')->orderBy('created_at', 'desc')->first();
+            return Response::json($data);
+        }
     }
 }

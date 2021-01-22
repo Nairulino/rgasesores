@@ -40,4 +40,5 @@ Route::resource('upload', 'PostsController');
 Route::get('/calendar','FullCalendarEventMasterController@index')->name('calendar');;
 Route::post('/calendar/create','FullCalendarEventMasterController@create')->name('calendar.create');
 Route::post('/calendar/update','FullCalendarEventMasterController@update');
-Route::post('/calendar/delete','FullCalendarEventMasterController@destroy');
+Route::post('/calendar/delete','FullCalendarEventMasterController@destroy')->name('calendar.delete');
+Route::get('/calendar/lastId','FullCalendarEventMasterController@getLastId')->name('calendar.getLastId');

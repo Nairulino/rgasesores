@@ -43,6 +43,7 @@
                 success: function (data) {
                     for (var i = 0; i < data.length; i++) {
                         events.push({
+                            id: data[i].id,
                             title: data[i].title,
                             start: data[i].start,
                             end: data[i].end
@@ -56,7 +57,6 @@
                         height: 820,
                         editable: true,
                         selectable: true,
-                        // events: "{{ route('calendar') }}",
                         events: events,
                         displayEventTime: true,
                         editable: true,
@@ -73,77 +73,83 @@
                             $('#modalTitle').html('Título del evento');
                             $('#calendarModal #title').val('');
                             $('#calendarModal #descripcion').val('');
-                            $('#calendarModal #start').val(moment(start.startStr)
-                                .format(
-                                    'YYYY-MM-DDTHH:mm'));
-                            $('#calendarModal #end').val(moment(start.endStr).format(
-                                'YYYY-MM-DDTHH:mm'));
+                            $('#calendarModal #start').val(moment(start.startStr).format('YYYY-MM-DDTHH:mm'));
+                            $('#calendarModal #end').val(moment(start.endStr).format('YYYY-MM-DDTHH:mm'));
                             $('#calendarModal').modal();
-
+                            $("#saveEvent").unbind('click');
                             $("#saveEvent").click(function (event) {
+                                var id;
                                 var title = $('#calendarModal #title').val();
                                 var start = $('#calendarModal #start').val();
                                 var end = $('#calendarModal #end').val();
                                 $.ajax({
-
                                     url: "{{ route('calendar.create') }}",
-                                    data: 'title=' + title + '&start=' +
-                                        start + '&end=' +
-                                        end,
+                                    data: 'title=' + title + '&start=' + start + '&end=' + end,
                                     type: "POST",
                                     success: function (data) {
-                                        displayMessage(
-                                            "¡Añadido satisfactoriamente!"
-                                        );
+                                        console.log("¡Añadido satisfactoriamente!");
                                     },
-                                    error: function (data) {
-                                        console.log(data);
+                                    error: function (err) {
+                                        console.log(err);
                                     }
                                 });
-                                calendar.addEvent({
-                                    title: title,
-                                    start: start,
-                                    end: end
+                                $.ajax({
+                                    type: 'GET',
+                                    url: "{{ route('calendar.getLastId') }}",
+                                    success: function (data) {
+                                        calendar.addEvent({
+                                            id: data.id,
+                                            title: data.title,
+                                            start: data.start,
+                                            end: data.end
+                                        });
+                                    }
                                 });
-
                                 calendar.unselect();
                                 $('#calendarModal').modal('hide');
                             });
                         },
-                        eventDrop: function (event, delta) {
-                            var start = calendar.formatDate(event.start,
-                                "Y-MM-DD HH:mm:ss");
-                            var end = calendar.formatDate(event.end,
-                                "Y-MM-DD HH:mm:ss");
-                            $.ajax({
-                                url: SITEURL + '/calendar/update',
-                                data: 'title=' + event.title + '&start=' +
-                                    start + '&end=' + end +
-                                    '&id=' + event.id,
-                                type: "POST",
-                                success: function (response) {
-                                    displayMessage("Updated Successfully");
-                                }
-                            });
-                        },
+
+                        // ESTA POR IMPLEMENTAR
+
+                        // eventDrop: function (event, delta) {
+                        //     var start = calendar.formatDate(event.start,"Y-MM-DD HH:mm:ss");
+                        //     var end = calendar.formatDate(event.end,"Y-MM-DD HH:mm:ss");
+                        //     $.ajax({
+                        //         url: SITEURL + '/calendar/update',
+                        //         data: 'title=' + event.title + '&start=' +
+                        //             start + '&end=' + end +
+                        //             '&id=' + event.id,
+                        //         type: "POST",
+                        //         success: function (response) {
+                        //             displayMessage("Updated Successfully");
+                        //         }
+                        //     });
+                        // },
+
+
                         eventClick: function (event) {
-                            var deleteMsg = confirm("Do you really want to delete?");
-                            if (deleteMsg) {
+                            $('#deleteModal').modal();
+                            $("#confirmDelete").unbind('click');
+                            $('#confirmDelete').click(function () {
                                 $.ajax({
                                     type: "POST",
-                                    url: SITEURL + '/calendar/delete',
-                                    data: "&id=" + event.id,
+                                    url: "{{ route('calendar.delete') }}",
+                                    data: "&id=" + event.event.id,
                                     success: function (response) {
-                                        if (parseInt(response) > 0) {
-                                            $('#calendar').calendar(
-                                                'removeEvents', event
-                                                .id);
-                                            displayMessage(
-                                                "Deleted Successfully");
+                                        if (parseInt(response) >
+                                            0) {
+                                            var eventToDelete =
+                                                calendar
+                                                .getEventById(event
+                                                    .event.id);
+                                            eventToDelete.remove();
+                                            console.log("¡Eliminado satisfastoriamente!");
                                         }
                                     }
                                 });
-                            }
+                                $('#deleteModal').modal('hide');
+                            });
                         }
                     });
 
