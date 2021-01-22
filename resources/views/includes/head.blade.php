@@ -99,9 +99,9 @@
                                     success: function (data) {
                                         calendar.addEvent({
                                             id: data.id,
-                                            title: data.title,
-                                            start: data.start,
-                                            end: data.end
+                                            title: title,
+                                            start: start,
+                                            end: end
                                         });
                                     }
                                 });
