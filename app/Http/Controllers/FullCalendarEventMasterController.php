@@ -6,9 +6,34 @@ use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Redirect, Response;
+use Validator;
 
 class FullCalendarEventMasterController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['admin']);
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'title' => ['required', 'string', 'max:255']
+        ]);
+    }
+
     public function index()
     {
         if (request()->ajax()) {
@@ -20,12 +45,17 @@ class FullCalendarEventMasterController extends Controller
 
     public function create(Request $request)
     {
+        $this->validator($request->all())->validate();
+
         $insertArr = [
             'title' => $request->title,
             'start' => $request->start,
-            'end' => $request->end
+            'end' => $request->end,
+            'description'=>$request->description,
+            'name_user'=>$request->name_user,
+            'id_user'=>$request->id_user
         ];
-        $event = Event::create($insertArr);
+        $event = Event::create($insertArr)->id;
         return Response::json($event);
     }
 
@@ -43,12 +73,4 @@ class FullCalendarEventMasterController extends Controller
         return Response::json($event);
     }
 
-
-    public function getLastID(Request $request)
-    {
-        if (request()->ajax()) {
-            $data = DB::table('events')->orderBy('created_at', 'desc')->first();
-            return Response::json($data);
-        }
-    }
 }

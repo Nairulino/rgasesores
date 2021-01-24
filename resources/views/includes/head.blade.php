@@ -37,6 +37,29 @@
                 }
             });
             var events = [];
+            var id_user = "";
+            var name_user = "";
+            $('#user').on('keyup',function() {
+                    var query = $('#user').val(); 
+
+                    $.ajax({                  
+                        url:"{{ route('users.search') }}",          
+                        type:"GET",              
+                        data:{'user':query},
+                       
+                        success:function (data) {
+                            $('#user_list').html(data.html);
+                        }
+                    });
+                });
+
+                $(document).on('click', 'li', function(){
+                    name_user = this.innerText;
+                    $('#user').val(name_user);
+                    id_user =  this.firstElementChild.innerText;
+                    $('#user_list').html("");
+                });
+
             $.ajax({
                 type: 'GET',
                 url: "{{ route('calendar') }}",
@@ -46,7 +69,10 @@
                             id: data[i].id,
                             title: data[i].title,
                             start: data[i].start,
-                            end: data[i].end
+                            end: data[i].end,
+                            description: data[i].description,
+                            name_user: data[i].name_user,
+                            id_user: data[i].id_user
                         });
                     }
 
@@ -70,9 +96,11 @@
                         selectable: true,
                         selectHelper: true,
                         select: function (start, end) {
+                            $('#calendarModal #titleError').hide();
                             $('#modalTitle').html('Título del evento');
                             $('#calendarModal #title').val('');
-                            $('#calendarModal #descripcion').val('');
+                            $('#calendarModal #user').val('');
+                            $('#calendarModal #description').val('');
                             $('#calendarModal #start').val(moment(start.startStr).format('YYYY-MM-DDTHH:mm'));
                             $('#calendarModal #end').val(moment(start.endStr).format('YYYY-MM-DDTHH:mm'));
                             $('#calendarModal').modal();
@@ -82,52 +110,47 @@
                                 var title = $('#calendarModal #title').val();
                                 var start = $('#calendarModal #start').val();
                                 var end = $('#calendarModal #end').val();
+                                var description = $('#calendarModal #description').val();
+                                // var id_user = 
                                 $.ajax({
                                     url: "{{ route('calendar.create') }}",
-                                    data: 'title=' + title + '&start=' + start + '&end=' + end,
+                                    data: 'title=' + title + '&start=' + start + '&end=' + end + '&description=' + description + '&name_user=' + name_user + '&id_user=' + id_user, 
                                     type: "POST",
-                                    success: function (data) {
+                                    success: function (id) {
                                         console.log("¡Añadido satisfactoriamente!");
+                                        calendar.addEvent({
+                                                     id: id,
+                                                     title: title,
+                                                     start: start,
+                                                     end: end,
+                                                     description: description,
+                                                     name_user: name_user,
+                                                     id_user: id_user
+                                                 }); 
+                                        calendar.unselect();
+                                        $('#calendarModal #titleError').hide();
+                                        $('#calendarModal').modal('hide');
                                     },
                                     error: function (err) {
+                                        $('#calendarModal #titleError').html(err.responseJSON.errors.title);
+                                        $('#calendarModal #titleError').show();
                                         console.log(err);
                                     }
                                 });
-                                $.ajax({
-                                    type: 'GET',
-                                    url: "{{ route('calendar.getLastId') }}",
-                                    success: function (data) {
-                                        calendar.addEvent({
-                                            id: data.id,
-                                            title: title,
-                                            start: start,
-                                            end: end
-                                        });
-                                    }
-                                });
-                                calendar.unselect();
-                                $('#calendarModal').modal('hide');
                             });
                         },
-
-                        // ESTA POR IMPLEMENTAR
-
-                        // eventDrop: function (event, delta) {
-                        //     var start = calendar.formatDate(event.start,"Y-MM-DD HH:mm:ss");
-                        //     var end = calendar.formatDate(event.end,"Y-MM-DD HH:mm:ss");
-                        //     $.ajax({
-                        //         url: SITEURL + '/calendar/update',
-                        //         data: 'title=' + event.title + '&start=' +
-                        //             start + '&end=' + end +
-                        //             '&id=' + event.id,
-                        //         type: "POST",
-                        //         success: function (response) {
-                        //             displayMessage("Updated Successfully");
-                        //         }
-                        //     });
-                        // },
-
-
+                        eventDrop: function (info) {
+                            var start = moment(info.event.startStr).format('YYYY-MM-DDTHH:mm');
+                            var end = moment(info.event.endStr).format('YYYY-MM-DDTHH:mm');
+                            $.ajax({
+                                url: "{{route('calendar.update')}}",
+                                data: 'title=' + info.event.title + '&start=' + start + '&end=' + end + '&id=' + info.event.id,
+                                type: "POST",
+                                success: function (response) {
+                                    console.log("¡Modificado satisfactoriamente!")
+                                }
+                            });
+                        },
                         eventClick: function (event) {
                             $('#deleteModal').modal();
                             $("#confirmDelete").unbind('click');

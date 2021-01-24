@@ -67,6 +67,44 @@ class UserController extends Controller
     }
 
     /**
+     * Búsqueda de usuarios 
+     * 
+     * @return output
+     */
+    public function search(Request $request){
+        
+        if($request->ajax()) {
+          
+            $data = User::where('name', 'LIKE', '%'.$request->user.'%')
+                ->get();
+           
+            $html = '';
+            $users = [];
+           
+            if (count($data)>0) {
+              
+                $html = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
+              
+                foreach ($data as $row){
+                   
+                    $html .= '<li class="list-group-item">'.$row->name.'<span id="id_user" style="display:none">'.$row->id.'</span></li>';
+                    $users[] = ['name'=>$row->name, 'id_user'=>$row->id];
+                }
+              
+                $html .= '</ul>';
+            }
+            else {
+             
+                $html .= '<li class="list-group-item">'.'No existen usuarios con ese nombre.'.'</li>';
+            }
+
+            $output = ['html'=>$html, 'users'=>$users];
+           
+            return $output;
+        }
+    }
+
+    /**
      * Display the users registered.
      *
      * @return \Illuminate\Http\Response
