@@ -11,6 +11,9 @@
 |
 */
 
+use App\Empresa;
+use App\Sociedad;
+
 Route::get('/', 'WelcomeController@welcome')->name('welcome');
 Route::post('/', 'ContactFormController@store')->name('contact');
 
@@ -34,9 +37,22 @@ Route::get('/documents/{user}/mydocs', 'DocumentsController@showMyDocs')->name('
 Route::resource('/users', 'UserController');
 Route::resource('/documents', 'DocumentsController');
 Route::resource('upload', 'PostsController');
+// Route::resource('empresas','EmpresaController');
+// Route::resource('sociedades','SociedadController');
 
-//fullcalender
+// fullcalender
 Route::get('/calendar','FullCalendarEventMasterController@index')->name('calendar');;
 Route::post('/calendar/create','FullCalendarEventMasterController@create')->name('calendar.create');
 Route::post('/calendar/update','FullCalendarEventMasterController@update')->name('calendar.update');;
 Route::post('/calendar/delete','FullCalendarEventMasterController@destroy')->name('calendar.delete');
+
+// Empresas
+Route::view('/empresa','auth.registrarEmpresa')->name('empresa');
+Route::get('/empresas', 'EmpresaController@show')->name('empresas');
+Route::post('/empresa/create','EmpresaController@create')->name('empresa.create');
+
+
+// Sociedades
+Route::view('/sociedad','auth.registrarSociedad')->name('sociedad');
+Route::get('/sociedades', 'SociedadController@show')->name('sociedades');
+Route::post('/sociedad/create','SociedadController@create')->name('sociedad.create');

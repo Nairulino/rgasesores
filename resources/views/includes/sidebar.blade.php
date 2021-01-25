@@ -21,8 +21,8 @@
                       aria-hidden="true"></i>Clientes<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                   <li><a href="{{route('personasfisicas')}}" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i>Personas físicas </a></li>
-                  <li><a href="#" class="waves-effect"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>Empresas </a></li> 
-                  <li><a href="#" class="waves-effect"><i class="fa fa-university fa-fw" aria-hidden="true"></i>Sociedades </a></li>
+                  <li><a href="{{route('empresas')}}" class="waves-effect"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>Empresas </a></li> 
+                  <li><a href="{{route('sociedades')}}" class="waves-effect"><i class="fa fa-university fa-fw" aria-hidden="true"></i>Sociedades </a></li>
                 </ul>
           </li>
           <li>
@@ -35,10 +35,10 @@
               <a href="{{route('register')}}" class="waves-effect"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>Añadir nuevo cliente</a>
           </li>
           <li>
-            <a href="#" class="waves-effect"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>Añadir nueva empresa</a>
+            <a href="{{route('empresa')}}" class="waves-effect"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>Añadir nueva empresa</a>
           </li>
           <li>
-            <a href="#" class="waves-effect"><i class="fa fa-university fa-fw" aria-hidden="true"></i>Añadir nueva sociedad</a>
+            <a href="{{route('sociedad')}}" class="waves-effect"><i class="fa fa-university fa-fw" aria-hidden="true"></i>Añadir nueva sociedad</a>
           </li>
           <li>
             <a href="{{route('calendar')}}" class="waves-effect"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Calendario</a>
