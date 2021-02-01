@@ -12,10 +12,6 @@
         <!-- /Logo -->
         @if (Auth::user() != null)
         <ul class="nav navbar-top-links navbar-right pull-right">
-            <li>
-                <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                    <input type="text" placeholder="Buscar..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-            </li>
             <li class="dropdown">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
                     <img src="{{ Storage::url(Auth::user()->img) }}" alt="user-img" width="36" class="img-circle">

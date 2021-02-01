@@ -67,6 +67,16 @@ class FullCalendarEventMasterController extends Controller
         return Response::json($event);
     }
 
+    public function edit(Request $request)
+    {
+        $where = array('id' => $request->id);
+        $editArr = ['title' => $request->title, 'start' => $request->start, 'end' => $request->end, 
+                    'name_user' => $request->name_user, 'id_user' => $request->id_user, 
+                    'description' => $request->description];
+        $event = Event::where($where)->update($editArr);
+        return Response::json($event);
+    }
+
     public function destroy(Request $request)
     {
         $event = Event::where('id', $request->id)->delete();

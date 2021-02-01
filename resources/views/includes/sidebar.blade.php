@@ -17,11 +17,11 @@
           </li>
             @endif
           <li>
-              <a href="{{route('personasfisicas')}}" class="waves-effect"><i class="fa fa-list-ul fa-fw"
+              <a href="#" class="waves-effect {{ (request()->is('personasfisicas')) ? 'active' : (((request()->is('empresas')) ? 'active' : ((request()->is('sociedades')) ? 'active' : '')))}}"><i class="fa fa-list-ul fa-fw"
                       aria-hidden="true"></i>Clientes<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                   <li><a href="{{route('personasfisicas')}}" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i>Personas físicas </a></li>
-                  <li><a href="{{route('empresas')}}" class="waves-effect"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>Empresas </a></li> 
+                  <li><a href="{{route('empresas')}}" class="waves-effect"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>Empresas </a></li>
                   <li><a href="{{route('sociedades')}}" class="waves-effect"><i class="fa fa-university fa-fw" aria-hidden="true"></i>Sociedades </a></li>
                 </ul>
           </li>
@@ -32,13 +32,13 @@
             <a href="{{route('documents.index')}}" class="waves-effect"><i class="fa fa-folder fa-fw" aria-hidden="true"></i>Documentos</a>
           </li>
           <li>
-              <a href="{{route('register')}}" class="waves-effect"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>Añadir nuevo cliente</a>
+              <a href="{{route('register')}}" class="waves-effect"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>Añadir persona física</a>
           </li>
           <li>
-            <a href="{{route('empresa')}}" class="waves-effect"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>Añadir nueva empresa</a>
+            <a href="{{route('empresa')}}" class="waves-effect"><i class="fa fa-briefcase fa-fw" aria-hidden="true"></i>Añadir empresa</a>
           </li>
           <li>
-            <a href="{{route('sociedad')}}" class="waves-effect"><i class="fa fa-university fa-fw" aria-hidden="true"></i>Añadir nueva sociedad</a>
+            <a href="{{route('sociedad')}}" class="waves-effect "><i class="fa fa-university fa-fw" aria-hidden="true"></i>Añadir sociedad</a>
           </li>
           <li>
             <a href="{{route('calendar')}}" class="waves-effect"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Calendario</a>

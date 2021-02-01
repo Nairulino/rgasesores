@@ -1,4 +1,4 @@
-<footer class="footer text-center">2020 Copyright</footer>
+<footer class="footer text-center">2021 © Copyright</footer>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ URL::asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -10,5 +10,3 @@
 <script src="{{ URL::asset('js/waves.js') }}"></script>
 <!-- Custom Theme JavaScript -->
 <script src="{{ URL::asset('js/custom.min.js') }}"></script>
-<!-- FullCalendar -->
-<script src="{{ URL::asset('js/main.js')}}"></script>

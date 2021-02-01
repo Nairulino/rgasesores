@@ -30,6 +30,7 @@
                                 <th scope="col">Cliente asociado</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">CIF</th>
+                                <th scope="col">Teléfono</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -38,8 +39,9 @@
                             <tr>
                                 <th scope="row">{{$sociedad->id}} </th>
                                 <td>{{$sociedad->name}} </td>
-                                <td>{{$sociedad->id_user}}</td>
+                                <td>{{$sociedad->user_name}}</td>
                                 <td>{{$sociedad->email}} </td>
+                                <td>{{$sociedad->phone}}</td>
                                 <td>{{$sociedad->cif}}</td>
                                 <td>
                                     <div class="btn-list" style="display: flex">

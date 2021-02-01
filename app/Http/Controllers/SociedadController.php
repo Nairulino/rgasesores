@@ -60,7 +60,8 @@ class SociedadController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'id_user' => $request->id_user,
-            'description' => $request->description
+            'description' => $request->description,
+            'user_name' => $request->user_name
         ])){
             return redirect()->route('sociedad')->with('success','¡La sociedad se ha registrado correctamente!');
         }else{

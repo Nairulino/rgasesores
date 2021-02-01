@@ -87,7 +87,7 @@ class UserController extends Controller
               
                 foreach ($data as $row){
                    
-                    $html .= '<li class="list-group-item">'.$row->name.'<span id="id_user" style="display:none">'.$row->id.'</span></li>';
+                    $html .= '<li class="list-group-item" id="users_list">'.$row->name.'<span id="id_user" style="display:none">'.$row->id.'</span></li>';
                     $users[] = ['name'=>$row->name, 'id_user'=>$row->id];
                 }
               

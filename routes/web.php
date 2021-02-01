@@ -43,16 +43,16 @@ Route::resource('upload', 'PostsController');
 // fullcalender
 Route::get('/calendar','FullCalendarEventMasterController@index')->name('calendar');;
 Route::post('/calendar/create','FullCalendarEventMasterController@create')->name('calendar.create');
-Route::post('/calendar/update','FullCalendarEventMasterController@update')->name('calendar.update');;
-Route::post('/calendar/delete','FullCalendarEventMasterController@destroy')->name('calendar.delete');
+Route::put('/calendar/update','FullCalendarEventMasterController@update')->name('calendar.update');;
+Route::delete('/calendar/delete','FullCalendarEventMasterController@destroy')->name('calendar.delete');
+Route::put('/calendar/edit','FullCalendarEventMasterController@edit')->name('calendar.edit');
 
 // Empresas
-Route::view('/empresa','auth.registrarEmpresa')->name('empresa');
+Route::view('/addEmpresa','auth.registrarEmpresa')->name('empresa');
 Route::get('/empresas', 'EmpresaController@show')->name('empresas');
 Route::post('/empresa/create','EmpresaController@create')->name('empresa.create');
 
-
 // Sociedades
-Route::view('/sociedad','auth.registrarSociedad')->name('sociedad');
+Route::view('/addSociedad','auth.registrarSociedad')->name('sociedad');
 Route::get('/sociedades', 'SociedadController@show')->name('sociedades');
 Route::post('/sociedad/create','SociedadController@create')->name('sociedad.create');
