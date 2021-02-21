@@ -47,6 +47,18 @@ class EmpresaController extends Controller
         return view('admin.clientes.empresas', ['empresas' => $empresas]);
     }
 
+    /**
+     * Search the users registered.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function searchEmpresas(Request $request)
+    {
+        $empresas = DB::table('empresas')->where('name','like','%'.$request->search.'%')->paginate(7);
+
+        return view('admin.clientes.empresas', ['empresas' => $empresas]);
+    }
+
      /**
      * Crear una nueva empresa
      * 

@@ -14,14 +14,18 @@
         </div>
     </div>
     @include('partials.alerts')
-  <!-- /.row -->
-  <!-- .row -->
+    <!-- /.row -->
+    <!-- .row -->
     <div class="row">
         <div class="col-md-12 col-xs-8">
             <div class="white-box">
-                <h3>Documentos</h3>
+                <h3>Documentos
+                    <input id="search" type="text" placeholder="Buscar..." class="search"><i
+                        class="fa fa-search"></i></a>
+                    </form>
+                </h3>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table id="documents" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -32,10 +36,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @php
-                        $cont = 1
-                        @endphp
-                        @foreach ($documents as $document)
+                            @php
+                            $cont = 1
+                            @endphp
+                            @foreach ($documents as $document)
                             <tr>
                                 <th scope="row">{{$cont++}} </th>
                                 <td>{{$document->desc_doc}} </td>
@@ -43,21 +47,24 @@
                                 <td>{{$document->created_at}}</td>
                                 <td>
                                     <div class="btn-list" style="display: flex">
-                                    <a href="{{route('documents.show', $document->id_doc)}}"> 
-                                        <button type="button" class="btn waves-effect waves-light btn-secondary pull-left ">Ver</button>
-                                    </a>
-                                    <a href="{{route('documents.download', $document->id_doc)}}">
-                                        <button type="button" class="btn waves-effect waves-light btn-info">Descargar</button>
-                                    </a>
+                                        <a href="{{route('documents.show', $document->id_doc)}}">
+                                            <button type="button"
+                                                class="btn waves-effect waves-light btn-secondary pull-left ">Ver</button>
+                                        </a>
+                                        <a href="{{route('documents.download', $document->id_doc)}}">
+                                            <button type="button"
+                                                class="btn waves-effect waves-light btn-info">Descargar</button>
+                                        </a>
                                         <form action="{{-- {{route('users.destroy', $user->id)}} --}}" method="post">
                                             {{-- {{ method_field('DELETE') }}
                                             @csrf --}}
-                                            <button type="submit" class="btn waves-effect waves-light btn-danger">Eliminar</button>
+                                            <button type="submit"
+                                                class="btn waves-effect waves-light btn-danger">Eliminar</button>
                                         </form>
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                     {{$documents->links()}}
@@ -65,7 +72,18 @@
             </div>
         </div>
     </div>
-  <!-- /.row -->
+    <!-- /.row -->
 </div>
+
+<script>
+    $(document).ready(function(){
+      $("#search").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#documents tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+</script>
 
 @endsection

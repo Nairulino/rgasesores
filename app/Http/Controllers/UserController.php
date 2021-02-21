@@ -117,6 +117,19 @@ class UserController extends Controller
     }
 
     /**
+     * Search the users registered.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function searchPersonasFisicas( Request $request )
+    {
+        
+        $personas = DB::table('users')->where('name', 'like', '%'.$request->search.'%')->paginate(7);        
+
+        return view('admin.clientes.personasfisicas', ['personas' => $personas]);
+    }
+
+    /**
      * Display the calendar.
      *
      * @return \Illuminate\Http\Response

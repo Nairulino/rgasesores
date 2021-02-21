@@ -26,10 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/app', 'WelcomeController@login')->name('app');
 Route::get('/users', 'UserController@index')->name('users');
 Route::get('search/users', 'UserController@search')->name('users.search');
+Route::get('search/personasfisicas', 'UserController@searchPersonasFisicas')->name('personasfisicas.search');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/personasfisicas', 'UserController@show')->name('personasfisicas');
 Route::get('/edit/user/{user}', 'UserController@edit')->name('edit');
-
 Route::get('/updocument', 'DocumentsController@updocument')->name('updocument');
 Route::get('/documents/{document}/download', 'DocumentsController@download')->name('documents.download');
 Route::get('/documents/{user}/mydocs', 'DocumentsController@showMyDocs')->name('documents.mydocs');
@@ -37,8 +37,6 @@ Route::get('/documents/{user}/mydocs', 'DocumentsController@showMyDocs')->name('
 Route::resource('/users', 'UserController');
 Route::resource('/documents', 'DocumentsController');
 Route::resource('upload', 'PostsController');
-// Route::resource('empresas','EmpresaController');
-// Route::resource('sociedades','SociedadController');
 
 // fullcalender
 Route::get('/calendar','FullCalendarEventMasterController@index')->name('calendar');;
@@ -51,8 +49,10 @@ Route::put('/calendar/edit','FullCalendarEventMasterController@edit')->name('cal
 Route::view('/addEmpresa','auth.registrarEmpresa')->name('empresa');
 Route::get('/empresas', 'EmpresaController@show')->name('empresas');
 Route::post('/empresa/create','EmpresaController@create')->name('empresa.create');
+Route::get('/search/empresa','EmpresaController@searchEmpresas')->name('empresas.search');
 
 // Sociedades
 Route::view('/addSociedad','auth.registrarSociedad')->name('sociedad');
 Route::get('/sociedades', 'SociedadController@show')->name('sociedades');
 Route::post('/sociedad/create','SociedadController@create')->name('sociedad.create');
+Route::get('/search/sociedades','SociedadController@searchSociedades')->name('sociedades.search');

@@ -20,9 +20,14 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="white-box">
-                <h3 class="box-title">Empresas</h3>
+                <form action="{{route('empresas.search')}}" method="GET">
+                    <h3 class="box-title">Empresas
+                        <input id="search" name= "search" type="text" placeholder="Buscar..." class="search">
+                        <button type="submit" class="btn waves-effect waves-light"><i class="fa fa-search"></i></button>
+                    </h3>
+                </form>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table id="empresas" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -35,28 +40,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($empresas as $empresa)
+                            @foreach ($empresas as $empresa)
                             <tr>
                                 <th scope="row">{{$empresa->id}} </th>
-                                <td>{{$empresa->name}} </td>
+                                <td><a href="#">{{$empresa->name}}</a></td>
                                 <td>{{$empresa->user_name}}</td>
                                 <td>{{$empresa->email}} </td>
                                 <td>{{$empresa->phone}}</td>
                                 <td>{{$empresa->cif}}</td>
                                 <td>
                                     <div class="btn-list" style="display: flex">
-                                    <a href="{{route('edit', $empresa->id)}}"> 
-                                            <button type="button" class="btn waves-effect waves-light btn-secondary pull-left ">Modificar</button>
+                                        <a href="{{route('edit', $empresa->id)}}">
+                                            <button type="button"
+                                                class="btn waves-effect waves-light btn-secondary pull-left ">Modificar</button>
                                         </a>
                                         <form action="{{route('users.destroy', $empresa->id)}}" method="post">
                                             {{ method_field('DELETE') }}
                                             @csrf
-                                            <button type="submit" class="btn waves-effect waves-light btn-danger">Eliminar</button>
+                                            <button type="submit"
+                                                class="btn waves-effect waves-light btn-danger">Eliminar</button>
                                         </form>
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                     {{$empresas->links()}}

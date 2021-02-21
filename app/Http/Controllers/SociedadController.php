@@ -48,6 +48,18 @@ class SociedadController extends Controller
     }
 
     /**
+     * Search the users registered.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function searchSociedades(Request $request)
+    {
+        $sociedades = DB::table('sociedades')->where('name','like','%'.$request->search.'%')->paginate(7);
+
+        return view('admin.clientes.sociedades', ['sociedades' => $sociedades]);
+    }
+
+    /**
      * Crear una nueva sociedad
      * 
      * @return \Illuminate\Http\Response

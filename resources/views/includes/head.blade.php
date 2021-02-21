@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+    <!-- Rgasesores CSS -->
+    <link rel="stylesheet" href="{{ URL::asset('css/rgasesores.css') }}">
+    <!-- Fontawesome CSS -->
+    {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" > --}}
     <!-- color CSS -->
     <link rel="stylesheet" href="{{ URL::asset('css/colors/default.css') }}">
     <!-- Fullcalendar CSS -->
