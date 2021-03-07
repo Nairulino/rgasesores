@@ -194,7 +194,7 @@ class UserController extends Controller
             $user->delete();
             return redirect()->route('personasfisicas')->with('success', 'El usuario '.$user->name.' ha sido eliminado con éxito.');
         }else{
-            return redirect()->route('personasfisicas')->with('failure', 'El usuario '.$user->name.' no ha podido ser eliminado.');
+            return redirect()->route('personasfisicas')->with('failure', 'El usuario no ha podido ser eliminado.');
         }
         
     }

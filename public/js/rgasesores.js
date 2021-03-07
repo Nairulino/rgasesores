@@ -107,7 +107,7 @@ $.ajax({
     type: 'GET',
     url: "calendar",
     success: function (data) {
-        for (var i = 0; i < data.length; i++) {
+        for (i in data) {
             events.push({
                 id: data[i].id,
                 title: data[i].title,
@@ -128,11 +128,11 @@ $.ajax({
             locale: 'es',
             firstDay: 1,
             height: 820,
-            editable: true,
-            selectable: true,
+            editable: admin == 1 ? true : false,
+            selectable: admin == 1 ? true : false,
+            selectHelper: true,
             events: events,
             displayEventTime: true,
-            editable: true,
             eventRender: function (event, element, view) {
                 if (event.allDay === 'true') {
                     event.allDay = true;
@@ -140,8 +140,6 @@ $.ajax({
                     event.allDay = false;
                 }
             },
-            selectable: true,
-            selectHelper: true,
             select: function (start, end) {
                 $('#calendarModal #titleError').hide();
                 $('#calendarModal #modalTitle').html('Título del evento');
@@ -204,11 +202,13 @@ $.ajax({
                 $('#editModal').modal();
                 $('#editModal #modalTitle').html('Editar evento');
                 $("#editModal #deleteEvent").off('click');
-                $('#editModal #title').val(event.event.title);
-                $('#editModal #start').val(moment(event.event.startStr).format('YYYY-MM-DDTHH:mm'));
-                $('#editModal #end').val(moment(event.event.endStr).format('YYYY-MM-DDTHH:mm'));
-                $('#editModal #user').val(event.event._def.extendedProps.name_user);
-                $('#editModal #description').val(event.event._def.extendedProps.description);
+                $('#editModal #title').val(event.event.title).prop("disabled", admin == 1 ? false : true);
+                $('#editModal #start').val(moment(event.event.startStr).format('YYYY-MM-DDTHH:mm')).prop("disabled", admin == 1 ? false : true);
+                $('#editModal #end').val(moment(event.event.endStr).format('YYYY-MM-DDTHH:mm')).prop("disabled", admin == 1 ? false : true);
+                $('#editModal #user').val(event.event._def.extendedProps.name_user).prop("disabled", admin == 1 ? false : true);
+                $('#editModal #description').val(event.event._def.extendedProps.description).prop("disabled", admin == 1 ? false : true);
+                $('#editModal #deleteEvent').prop("disabled", admin == 1 ? false : true);
+                $('#editModal #saveEvent').prop("disabled", admin == 1 ? false : true);
                 $('#editModal #saveEvent').off('click');
                 $('#editModal #saveEvent').on('click', function() {
                     var title = $('#editModal #title').val();

@@ -39,9 +39,9 @@ Route::resource('/documents', 'DocumentsController');
 Route::resource('upload', 'PostsController');
 
 // fullcalender
-Route::get('/calendar','FullCalendarEventMasterController@index')->name('calendar');;
+Route::get('/calendar','FullCalendarEventMasterController@index')->name('calendar');
 Route::post('/calendar/create','FullCalendarEventMasterController@create')->name('calendar.create');
-Route::put('/calendar/update','FullCalendarEventMasterController@update')->name('calendar.update');;
+Route::put('/calendar/update','FullCalendarEventMasterController@update')->name('calendar.update');
 Route::delete('/calendar/delete','FullCalendarEventMasterController@destroy')->name('calendar.delete');
 Route::put('/calendar/edit','FullCalendarEventMasterController@edit')->name('calendar.edit');
 

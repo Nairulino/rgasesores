@@ -37,10 +37,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Función para comprobar si es admin con admin = 1
-     */
-    public function isAdmin($admin){
-        return User::where('admin', $admin)->get();
-    }
 }

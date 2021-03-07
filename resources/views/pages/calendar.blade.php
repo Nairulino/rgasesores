@@ -1,3 +1,7 @@
+<script>
+  var admin = {{ (Auth::user()->admin == 1) ? 1 : 0 }};
+</script>
+
 @extends('layouts.app')
 <!-- FullCalendar -->
 <script src="{{ URL::asset('js/rgasesores.js') }}" defer></script>
@@ -139,4 +143,5 @@
     </div>
   </div>
 </div>
+
 @endsection

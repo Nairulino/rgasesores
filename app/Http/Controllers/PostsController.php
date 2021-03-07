@@ -20,7 +20,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth']);
     }
 
     
@@ -95,7 +95,7 @@ class PostsController extends Controller
                 ['id_user' => $id, 'desc_doc' => $desc, 'path' => $path, 'created_at' => Carbon::now()]
             );
 
-            return redirect('documents')->with('success', '¡El documento se ha subido correctamente!');
+            return redirect('updocument')->with('success', '¡El documento se ha subido correctamente!');
         }
 
         return redirect('profile')->with('warning', 'No se ha seleccionado ninguna imagen.');

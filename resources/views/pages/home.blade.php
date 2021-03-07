@@ -1,93 +1,67 @@
+<script src="{{ URL::asset('js/home.js') }}" defer></script>
+<script src="{{ URL::asset('js/main.js')}}"></script>
+<script src="{{ URL::asset('js/locales-all.js')}}"></script>
+<script src="{{ URL::asset('js/userCalendar.js') }}" defer></script>
 @extends('layouts.app')
 
 @section('content')
 <div class="container-fluid">
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Panel de Control</h4> 
+            <h4 class="page-title">Panel de Control</h4>
         </div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
             <ol class="breadcrumb">
                 <li><a href="#">Panel de Control</a></li>
             </ol>
         </div>
-        <!-- /.col-lg-12 -->
     </div>
-    <!-- /.row -->
-    <!-- ============================================================== -->
-    <!-- Different data widgets -->
-    <!-- ============================================================== -->
-    <!-- .row -->
-    {{-- <div class="row">
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-            <div class="white-box analytics-info">
-                <h3 class="box-title">Total Visit</h3>
-                <ul class="list-inline two-part">
-                    <li>
-                        <div id="sparklinedash"></div>
-                    </li>
-                    <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">659</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-            <div class="white-box analytics-info">
-                <h3 class="box-title">Total Page Views</h3>
-                <ul class="list-inline two-part">
-                    <li>
-                        <div id="sparklinedash2"></div>
-                    </li>
-                    <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">869</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-xs-12">
-            <div class="white-box analytics-info">
-                <h3 class="box-title">Unique Visitor</h3>
-                <ul class="list-inline two-part">
-                    <li>
-                        <div id="sparklinedash3"></div>
-                    </li>
-                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">911</span></li>
-                </ul>
-            </div>
-        </div>
-    </div> --}}
-    <!--/.row -->
-    <!-- ============================================================== -->
-    <!-- chat-listing & recent comments -->
-    <!-- ============================================================== -->
+
     <div class="row">
-        <!-- .col -->
         <div class="col-md-12 col-lg-8 col-sm-12">
             <div class="white-box">
                 <h3 class="box-title">Consultas recientes</h3>
                 <div class="comment-center p-t-10">
                     <div class="comment-body">
-                        <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle">
+                        <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user"
+                                class="img-circle">
                         </div>
                         <div class="mail-contnet">
-                            <h5>Ricardo Ejemplo Consulta</h5><span class="time">10:20 AM   20  may 2020</span>
-                            <br/><span class="mail-desc">Necesito información sobre lo que puede costar que me tramiteis la renta. Gracias, un saludo.</span> 
-                            <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Contestar</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Rechazar</a>
+                            <h5>Ricardo Ejemplo Consulta</h5><span class="time">10:20 AM 20 may 2020</span>
+                            <br /><span class="mail-desc">Necesito información sobre lo que puede costar que me
+                                tramiteis la renta. Gracias, un saludo.</span>
+                            <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i
+                                    class="ti-check text-success m-r-5"></i>Contestar</a><a href="javacript:void(0)"
+                                class="btn-rounded btn btn-default btn-outline"><i
+                                    class="ti-close text-danger m-r-5"></i> Rechazar</a>
                         </div>
                     </div>
                     <div class="comment-body">
-                        <div class="user-img"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle">
+                        <div class="user-img"> <img src="../plugins/images/users/sonu.jpg" alt="user"
+                                class="img-circle">
                         </div>
                         <div class="mail-contnet">
-                            <h5>Sonu Ejemplo Consulta</h5><span class="time">10:20 AM   12  jun 2020</span>
-                            <br/><span class="mail-desc">¿Qué documentos son los necesarios para poder solicitar el ingreso mínimo vital?</span>
-                            <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Contestar</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Rechazar</a>
+                            <h5>Sonu Ejemplo Consulta</h5><span class="time">10:20 AM 12 jun 2020</span>
+                            <br /><span class="mail-desc">¿Qué documentos son los necesarios para poder solicitar el
+                                ingreso mínimo vital?</span>
+                            <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i
+                                    class="ti-check text-success m-r-5"></i>Contestar</a><a href="javacript:void(0)"
+                                class="btn-rounded btn btn-default btn-outline"><i
+                                    class="ti-close text-danger m-r-5"></i> Rechazar</a>
                         </div>
                     </div>
                     <div class="comment-body b-none">
-                        <div class="user-img"> <img src="../plugins/images/users/arijit.jpg" alt="user" class="img-circle">
+                        <div class="user-img"> <img src="../plugins/images/users/arijit.jpg" alt="user"
+                                class="img-circle">
                         </div>
                         <div class="mail-contnet">
-                            <h5>Taruk Ejemplo Consulta</h5><span class="time">10:20 AM   20  jun 2020</span>
-                            <br/><span class="mail-desc">¿Es necesario presentar el pasaporte para viajar fuera de España?</span>
-                            <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Contestar</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Rechazar</a>
+                            <h5>Taruk Ejemplo Consulta</h5><span class="time">10:20 AM 20 jun 2020</span>
+                            <br /><span class="mail-desc">¿Es necesario presentar el pasaporte para viajar fuera de
+                                España?</span>
+                            <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i
+                                    class="ti-check text-success m-r-5"></i>Contestar</a><a href="javacript:void(0)"
+                                class="btn-rounded btn btn-default btn-outline"><i
+                                    class="ti-close text-danger m-r-5"></i> Rechazar</a>
                         </div>
                     </div>
                 </div>
@@ -98,60 +72,10 @@
                 <div class="sk-chat-widgets">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            USUARIOS RECIENTES 
+                            AGENDA
                         </div>
-                        <div class="panel-body">
-                            <ul class="chatonline">
-                                <li>
-                                    <div class="call-chat">
-                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                    </div>
-                                    <a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <div class="call-chat">
-                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                    </div>
-                                    <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                                </li>
-                                <li>
-                                    <div class="call-chat">
-                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                    </div>
-                                    <a href="javascript:void(0)"><img src="../plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                                </li>
-                                <li>
-                                    <div class="call-chat">
-                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                    </div>
-                                    <a href="javascript:void(0)"><img src="../plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                                </li>
-                                <li>
-                                    <div class="call-chat">
-                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                    </div>
-                                    <a href="javascript:void(0)"><img src="../plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <div class="call-chat">
-                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                    </div>
-                                    <a href="javascript:void(0)"><img src="../plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <div class="call-chat">
-                                        <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                        <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                    </div>
-                                    <a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                </li>
-                            </ul>
+                        <div id="calendar">
+
                         </div>
                     </div>
                 </div>
@@ -160,4 +84,58 @@
         <!-- /.col -->
     </div>
     <!-- /.container-fluid -->
-@endsection
+    <!-- Modal Edit Event-->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" id="editEvent" autocomplete="off">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            id="closeModal"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalTitle"></h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="title" class="col-sm-2 control-label">Título</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="title" class="form-control" id="title" placeholder="Título"
+                                    disabled>
+                                <span class="invalid-feedback" style="display: none; color: red;" role="alert"
+                                    id="titleError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="client" class="col-sm-2 control-label">Cliente</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="user" id="user" placeholder="Nombre del cliente" disabled
+                                    class="form-control user">
+                                <div id="users_list"></div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion" class="col-sm-2 control-label">Descripción</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="description" class="form-control" id="description" disabled
+                                    placeholder="Descripción">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="start" class="col-sm-2 control-label">Fecha inicio</label>
+                            <div class="col-sm-10">
+                                <input type="datetime-local" name="start" class="form-control" id="start" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="end" class="col-sm-2 control-label">Fecha final</label>
+                            <div class="col-sm-10">
+                                <input type="datetime-local" name="end" class="form-control" id="end" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @endsection
