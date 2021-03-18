@@ -9,9 +9,13 @@
                 </b>
                 </span> </a>
         </div>
+        
         <!-- /Logo -->
         @if (Auth::user() != null)
         <ul class="nav navbar-top-links navbar-right pull-right">
+            <li>
+                <a class="nav-toggler open-close waves-light hidden-lg" href="javascript:void(0)"><i class="fa fa-bars"></i></a>
+            </li>
             <li class="dropdown">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
                     <img src="{{ Storage::url(Auth::user()->img) }}" alt="user-img" width="36" class="img-circle">

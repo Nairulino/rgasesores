@@ -1,15 +1,16 @@
+@extends('layouts.app')
+
+@section('content')
+<!-- FullCalendar -->
 <script>
   var admin = {{ (Auth::user()->admin == 1) ? 1 : 0 }};
 </script>
-
-@extends('layouts.app')
-<!-- FullCalendar -->
 <script src="{{ URL::asset('js/rgasesores.js') }}" defer></script>
 <script src="{{ URL::asset('js/main.js')}}"></script>
 <script src="{{ URL::asset('js/locales-all.js')}}"></script>
-@section('content')
-<div id="calendar"></div>
 
+
+<div id="calendar"></div>
 <!-- Modal Add Event-->
 <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">

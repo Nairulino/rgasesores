@@ -50,7 +50,7 @@
                                 <td>{{$empresa->cif}}</td>
                                 <td>
                                     <div class="btn-list" style="display: flex">
-                                        <a href="{{route('edit', $empresa->id)}}">
+                                        <a href="{{route('users.edit', $empresa->id)}}">
                                             <button type="button"
                                                 class="btn waves-effect waves-light btn-secondary pull-left ">Modificar</button>
                                         </a>

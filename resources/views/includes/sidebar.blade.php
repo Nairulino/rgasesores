@@ -51,6 +51,10 @@
       </li>
       @endif
       <li>
+        <a href="{{route('consultas.index')}}" class="waves-effect"><i class="fa fa-book fa-fw"
+            aria-hidden="true"></i>Consultas</a>
+      </li>
+      <li>
         <a href="{{route('calendar')}}" class="waves-effect"><i class="fa fa-calendar fa-fw"
             aria-hidden="true"></i>Calendario</a>
       </li>

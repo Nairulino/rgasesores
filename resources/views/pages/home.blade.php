@@ -1,10 +1,11 @@
-<script src="{{ URL::asset('js/home.js') }}" defer></script>
-<script src="{{ URL::asset('js/main.js')}}"></script>
-<script src="{{ URL::asset('js/locales-all.js')}}"></script>
-<script src="{{ URL::asset('js/userCalendar.js') }}" defer></script>
 @extends('layouts.app')
 
 @section('content')
+<!-- FullCalendar -->
+<script src="{{ URL::asset('js/main.js')}}"></script>
+<script src="{{ URL::asset('js/locales-all.js')}}"></script>
+<script src="{{ URL::asset('js/userCalendar.js') }}" defer></script>
+
 <div class="container-fluid">
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">

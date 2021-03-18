@@ -41,11 +41,11 @@
                             @foreach ($personas as $user)
                             <tr>
                                 <th scope="row">{{$user->id}} </th>
-                                <td><a href="{{route('edit', $user->id)}}">{{$user->name}}</a></td>
+                                <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                                 <td>{{$user->email}} </td>
                                 <td>
                                     <div class="btn-list" style="display: flex">
-                                        <a href="{{route('edit', $user->id)}}">
+                                        <a href="{{route('users.edit', $user->id)}}">
                                             <button type="button"
                                                 class="btn waves-effect waves-light btn-secondary pull-left ">Modificar</button>
                                         </a>

@@ -144,10 +144,10 @@ class PostsController extends Controller
 
             $user->save();
 
-            return redirect()->route('edit', $user)->with('success', '¡Imagen de perfil actualizada!');
+            return redirect()->route('users.edit', $user)->with('success', '¡Imagen de perfil actualizada!');
         }
 
-        return redirect()->route('edit', $user)->with('warning', 'No se ha seleccionado ninguna imagen.' );
+        return redirect()->route('users.edit', $user)->with('warning', 'No se ha seleccionado ninguna imagen.' );
     }
 
     /**

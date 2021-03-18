@@ -19,6 +19,7 @@ Route::post('/', 'ContactFormController@store')->name('contact');
 
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/projects', 'pages.projects')->name('projects');
+Route::view('/create/consulta', 'consulta.create')->name('newConsulta');
 
 Auth::routes();
 
@@ -29,14 +30,15 @@ Route::get('search/users', 'UserController@search')->name('users.search');
 Route::get('search/personasfisicas', 'UserController@searchPersonasFisicas')->name('personasfisicas.search');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/personasfisicas', 'UserController@show')->name('personasfisicas');
-Route::get('/edit/user/{user}', 'UserController@edit')->name('edit');
 Route::get('/updocument', 'DocumentsController@updocument')->name('updocument');
 Route::get('/documents/{document}/download', 'DocumentsController@download')->name('documents.download');
 Route::get('/documents/{user}/mydocs', 'DocumentsController@showMyDocs')->name('documents.mydocs');
 
 Route::resource('/users', 'UserController');
 Route::resource('/documents', 'DocumentsController');
-Route::resource('upload', 'PostsController');
+Route::resource('/upload', 'PostsController');
+Route::resource('/consultas', 'ConsultaController');
+
 
 // fullcalender
 Route::get('/calendar','FullCalendarEventMasterController@index')->name('calendar');

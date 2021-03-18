@@ -2,10 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use DB;
 use Illuminate\Http\Request;
+use Log;
 
 class ConsultaController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +28,13 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-        //
+
+        if(Auth::user()->admin == 1)
+            $consultas = DB::table('consultas')->paginate(3);
+        else
+            $consultas = DB::table('consultas')->where('id_user', '=', Auth::user()->id)->paginate(3);
+
+        return view('pages.consulta', ['consultas' => $consultas]);
     }
 
     /**
