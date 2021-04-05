@@ -76,7 +76,7 @@ class PostsController extends Controller
             $ext = $file->getClientOriginalExtension();
             $name = "profile-img-" . $user->name . "-" . $user->id . "." .$ext;
 
-            $user->img = $file->store('public/img/profile', ['name'=>$name]);
+            $user->img = $file->storeAs('public/img/profile', $name);
 
             $user->save();
 
@@ -88,7 +88,7 @@ class PostsController extends Controller
             $this->validator($request->all())->validate();
 
             $name = $file->getClientOriginalName();
-            $path = $file->store('public/documents');
+            $path = $file->storeAs('public/documents', $name);
             $desc = $request->desc;
 
             DB::table('documents')->insert(
@@ -140,7 +140,7 @@ class PostsController extends Controller
             $ext = $file->getClientOriginalExtension();
             $name = "profile-img-" . $user->name . "-" . $user->id . "." .$ext;
 
-            $user->img = $file->store('public/img/profile', ['name'=>$name]);
+            $user->img = $file->storeAs('public/img/profile', $name);
 
             $user->save();
 

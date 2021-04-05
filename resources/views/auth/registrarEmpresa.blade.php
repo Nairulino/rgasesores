@@ -17,7 +17,7 @@
     <!-- /.row -->
     <!-- .row -->
     <div class="row">
-        <div class="col-md-12 col-xs-8">
+        <div class="col-md-12 col-lg-12 col-sm-12">
             <div class="white-box">
                 <form method='post' action="{{route('empresa.create')}}" class="form-horizontal form-material" autocomplete="off">
                     @csrf

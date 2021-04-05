@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Consultas extends Migration
+class CreateConsultasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,13 +15,14 @@ class Consultas extends Migration
     {
         Schema::create('consultas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
             $table->string('content');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users');
-            $table->string('user_name');
-            $table->string('user_img');
-            $table->boolean('read');
-            $table->boolean('answered');
+            $table->boolean('read')->default(false);
+            $table->boolean('answered')->default(false);
+            $table->string('files');
+            $table->bigInteger('id_response')->default(0);
             $table->timestamps();
         });
     }

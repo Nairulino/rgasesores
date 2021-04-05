@@ -4,66 +4,61 @@
 <div class="container-fluid">
   <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-      <h4 class="page-title">Panel de Control</h4>
+      <h4 class="page-title">Crear Consulta</h4>
     </div>
     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
       <ol class="breadcrumb">
-        <li><a href="#">Panel de Control</a></li>
-      </ol>
+        <li><a href="{{route('home')}}">Panel de Control</a></li>
+        <li class="active">Crear Consulta</li>
+    </ol>
     </div>
   </div>
   @include('partials.alerts')
   <div class="row">
     <div class="col-md-12 col-lg-12 col-sm-12">
       <div class="white-box">
-        <h3 class="box-title">Crear consulta</h3>
-        <div class="card">
-          <div class="card-body">
-            <form class="m-t-4">
-              <div class="">
-                <div class="m-b-3">
-                  <input type="text" class="form-control" placeholder="Name">
-                </div>
-                <div class="m-b-3">
-                  <input type="email" class="form-control" placeholder="Email">
-                </div>
-                <div class="email-repeater m-b-3">
-                  <div data-repeater-list="repeater-group">
-                    <div data-repeater-item class="row m-b-3">
-                      <div class="col-md-10">
-                        <div class="custom-file">
-                          <input type="file" class="form-control-file" id="customFile">
-                        </div>
-                      </div>
-                      <div class="col-md-2">
-                        <button data-repeater-delete="" class="btn btn-danger waves-effect waves-light" type="button">
-                          <i data-feather="x-circle" class="feather-sm fill-white"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <button type="button" data-repeater-create="" class="btn btn-info waves-effect waves-light">
-                    <div class="d-flex align-items-center">
-                      Add More File
-                      <i data-feather="plus-circle" class="feather-sm ms-2 fill-white"></i>
-                    </div>
-                  </button>
-                </div>
-                <div class="mb-3">
-                  <textarea class="form-control" rows="3" placeholder="Message"></textarea>
-                </div>
-                <div class="mb-3">
-                  <button
-                    class="btn rounded-pill px-4 btn-light-success text-success font-weight-medium waves-effect waves-light"
-                    type="submit">
-                    <i data-feather="send" class="feather-sm ms-2 fill-white"></i>
-                    Submit
-                  </button>
-                </div>
+        <form method='post' action="{{route('consultas.store')}}" class="form-horizontal form-material" autocomplete="off" enctype="multipart/form-data">
+          @csrf
+          <div class="form-group">
+              <label class="col-md-12">Título de la consulta</label>
+              <div class="col-md-12">
+                  <input id="titulo" type="text" placeholder="Introduzca el título de la consulta..." name="titulo"
+                      class="form-control form-control-line @error('titulo') is-invalid @enderror" required autofocus>
+
+                  @error('titulo')
+                  <span class="invalid-feedback" role="alert">
+                      {{ $message }}
+                  </span>
+                  @enderror
               </div>
-            </form>
           </div>
+          <div class="form-group">
+              <label class="col-md-12">¿Qué desea consultar?</label>
+              <div class="col-md-12">
+                  <textarea id="consulta" rows="5" class="form-control form-control-line @error('consulta') is-invalid @enderror"
+                      name="consulta" placeholder="Introduzca su consulta..." required></textarea>
+
+                  @error('consulta')
+                  <span class="invalid-feedback" role="alert">
+                      {{ $message }}
+                  </span>
+                  @enderror
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-12">¿Desea adjuntar algún archivo?</label>
+            <div class="col-md-12">
+              <input type="file" class="form-control-file" id="archivos" name="archivos[]" multiple>
+            </div>
         </div>
+          <div class="form-group">
+              <a href="#">
+                  <div class="col-sm-12">
+                      <button type="submit" class="btn btn-success">{{ __('Crear consulta') }}</button>
+                  </div>
+              </a>
+          </div>
+      </form>
       </div>
     </div>
   </div>
