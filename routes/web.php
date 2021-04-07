@@ -11,15 +11,12 @@
 |
 */
 
-use App\Empresa;
-use App\Sociedad;
-
 Route::get('/', 'WelcomeController@welcome')->name('welcome');
 Route::post('/', 'ContactFormController@store')->name('contact');
 
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/projects', 'pages.projects')->name('projects');
-Route::view('/create/consulta', 'consulta.create')->name('newConsulta');
+
 
 Auth::routes();
 
@@ -37,7 +34,7 @@ Route::get('/documents/{user}/mydocs', 'DocumentsController@showMyDocs')->name('
 Route::resource('/users', 'UserController');
 Route::resource('/documents', 'DocumentsController');
 Route::resource('/upload', 'PostsController');
-Route::resource('/consultas', 'ConsultaController');
+
 
 
 // fullcalender
@@ -58,3 +55,9 @@ Route::view('/addSociedad','auth.registrarSociedad')->name('sociedad');
 Route::get('/sociedades', 'SociedadController@show')->name('sociedades');
 Route::post('/sociedad/create','SociedadController@create')->name('sociedad.create');
 Route::get('/search/sociedades','SociedadController@searchSociedades')->name('sociedades.search');
+
+// Consultas
+Route::resource('/consultas', 'ConsultaController');
+Route::view('/create/consulta', 'consulta.create')->name('newConsulta');
+Route::get('/consulta/answer/{id}', 'ConsultaController@answer')->name('consultas.answer');
+Route::post('/consulta/response', 'ConsultaController@response')->name('consultas.response');

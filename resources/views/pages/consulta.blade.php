@@ -23,6 +23,7 @@
                 @else
                 <div class="comment-center p-t-10">
                     @foreach ($consultas as $consulta)
+                    @if($consulta->id_response == 0)
                     <div class="comment-body">
                         <div class="user-img"> <img src="{{Storage::url($consulta->img)}}" alt="user"
                                 class="img-circle">
@@ -31,12 +32,66 @@
                             <h5>{{$consulta->name}}</h5><span class="time">{{$consulta->created_at}}</span>
                             <h4>{{$consulta->title}}</h4>
                             <span class="mail-desc">{{$consulta->content}}</span>
-                            <a href="{{route('consultas.create')}}" class="btn btn btn-rounded btn-default btn-outline m-r-5">
+                            @if($consulta->files != '')
+                                    <label hidden>{{$cont_dos = 1}}</label>
+                                    <a class="btn btn-default" role="button" data-toggle="collapse"
+                                        href="#archivosConsulta" aria-expanded="false" aria-controls="archivosConsulta">
+                                        Ver archivos adjuntos
+                                    </a>
+                                    <div class="collapse" id="archivosConsulta">
+                                        @foreach($consulta->files as $file)
+                                        <a href="{{Storage::url($file)}}" target="_blank">
+                                            <button class="btn btn-default">Adjunto {{$cont_dos++}}</button>
+                                        </a>
+                                        @endforeach
+                                    </div>
+                                    @endif
+                            <label hidden>{{$cont = 1}}</label>
+                            @foreach ($consultas_response as $consulta_response)
+                            <label hidden>{{$cont++}}</label>
+                            @if($consulta->id == $consulta_response->id_response)
+                            <a class="btn btn-default" role="button" data-toggle="collapse" href="#respuesta{{$cont}}"
+                                aria-expanded="false" aria-controls="respuesta{{$cont}}">
+                                Ver respuesta
+                            </a>
+                            <div class="collapse" id="respuesta{{$cont}}">
+                                <br>
+                                <div class="user-img"> <img src="{{Storage::url($consulta_response->img)}}" alt="user"
+                                        class="img-circle">
+                                </div>
+                                <div class="mail-contnet">
+                                    <h5>{{$consulta_response->name}}</h5><span
+                                        class="time">{{$consulta_response->created_at}}</span>
+                                    <span class="mail-desc">{{$consulta_response->content}}</span>
+                                    @if($consulta_response->files != '')
+                                    <label hidden>{{$cont_uno = 1}}</label>
+                                    <a class="btn btn-default" role="button" data-toggle="collapse"
+                                        href="#archivosConsulta" aria-expanded="false" aria-controls="archivosConsulta">
+                                        Ver archivos adjuntos
+                                    </a>
+                                    <div class="collapse" id="archivosConsulta">
+                                        @foreach($consulta_response->files as $file)
+                                        <a href="{{Storage::url($file)}}" target="_blank">
+                                            <button class="btn btn-default">Adjunto {{$cont_uno++}}</button>
+                                        </a>
+                                        @endforeach
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                            @endif
+                            @endforeach
+
+                            @if(Auth::User()->admin == 1 && $consulta->answered != true)
+                            <a href="{{route('consultas.answer', $consulta->id)}}"
+                                class="btn btn-default btn-outline m-r-5">
                                 <i class="ti-check text-success m-r-5"></i>Contestar</a>
-                            <a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline">
+                            <a href="javacript:void(0)" class="btn btn-danger btn-outline">
                                 <i class="ti-close text-danger m-r-5"></i>Rechazar</a>
+                            @endif
                         </div>
                     </div>
+                    @endif
                     @endforeach
                 </div>
                 @endif

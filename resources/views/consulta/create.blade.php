@@ -23,7 +23,7 @@
               <label class="col-md-12">Título de la consulta</label>
               <div class="col-md-12">
                   <input id="titulo" type="text" placeholder="Introduzca el título de la consulta..." name="titulo"
-                      class="form-control form-control-line @error('titulo') is-invalid @enderror" required autofocus>
+                      class="form-control form-control-line @error('titulo') is-invalid @enderror" value="{{old('titulo')}}" required autofocus>
 
                   @error('titulo')
                   <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
               <label class="col-md-12">¿Qué desea consultar?</label>
               <div class="col-md-12">
                   <textarea id="consulta" rows="5" class="form-control form-control-line @error('consulta') is-invalid @enderror"
-                      name="consulta" placeholder="Introduzca su consulta..." required></textarea>
+                      name="consulta" placeholder="Introduzca su consulta..." value="{{old('consulta')}}" required></textarea>
 
                   @error('consulta')
                   <span class="invalid-feedback" role="alert">
