@@ -20,13 +20,19 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="white-box">
-                    <form action="{{route('personasfisicas.search')}}" method="GET">
+                <h3 class="box-title">Personas físicas</h3>
+                <div class="box">
+                    <form action="{{route('personasfisicas.search')}}" method="POST" class="form-inline">
                         @csrf
-                        <h3 class="box-title">Personas físicas
-                            <input id="search" name="search" type="text" placeholder="Buscar..." class="search">
+                            <input id="name" name="name" type="text" placeholder="Nombre" class="form-control">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                            <input type="phone" name="phone" class="form-control" max="9" placeholder="Teléfono">
+                            
                             <button type="submit" class="btn waves-effect waves-light"><i class="fa fa-search"></i></button>
-                        </h3>
+                        
                     </form>
+                </div>
+                    
                 <div class="table-responsive">
                     <table id="personasfisicas" class="table">
                         <thead>
@@ -34,6 +40,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Correo</th>
+                                <th scope="col">Teléfono</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -43,6 +50,7 @@
                                 <th scope="row">{{$user->id}} </th>
                                 <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                                 <td>{{$user->email}} </td>
+                                <td>{{$user->phone}}</td>
                                 <td>
                                     <div class="btn-list" style="display: flex">
                                         <a href="{{route('users.edit', $user->id)}}">

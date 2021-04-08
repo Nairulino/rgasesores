@@ -124,7 +124,11 @@ class UserController extends Controller
     public function searchPersonasFisicas( Request $request )
     {
         
-        $personas = DB::table('users')->where('name', 'like', '%'.$request->search.'%')->paginate(7);        
+        $personas = DB::table('users')->where([
+            ['name', 'like', '%'.$request->name.'%'],
+            ['email', 'like', '%'.$request->email.'%'],
+            ['phone', 'like', '%'.$request->phone.'%']
+            ])->paginate(7);        
 
         return view('admin.clientes.personasfisicas', ['personas' => $personas]);
     }

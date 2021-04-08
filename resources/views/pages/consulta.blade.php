@@ -22,7 +22,9 @@
                 <h5>No hay consultas pendientes</h5>
                 @else
                 <div class="comment-center p-t-10">
+                    <label hidden>{{$cont_tres = 1}}</label>
                     @foreach ($consultas as $consulta)
+                    <label hidden>{{$cont_tres++}}</label>
                     @if($consulta->id_response == 0)
                     <div class="comment-body">
                         <div class="user-img"> <img src="{{Storage::url($consulta->img)}}" alt="user"
@@ -35,10 +37,10 @@
                             @if($consulta->files != '')
                                     <label hidden>{{$cont_dos = 1}}</label>
                                     <a class="btn btn-default" role="button" data-toggle="collapse"
-                                        href="#archivosConsulta" aria-expanded="false" aria-controls="archivosConsulta">
+                                        href="#archivosConsulta{{$cont_tres}}" aria-expanded="false" aria-controls="archivosConsulta{{$cont_tres}}">
                                         Ver archivos adjuntos
                                     </a>
-                                    <div class="collapse" id="archivosConsulta">
+                                    <div class="collapse" id="archivosConsulta{{$cont_tres}}">
                                         @foreach($consulta->files as $file)
                                         <a href="{{Storage::url($file)}}" target="_blank">
                                             <button class="btn btn-default">Adjunto {{$cont_dos++}}</button>
@@ -66,10 +68,10 @@
                                     @if($consulta_response->files != '')
                                     <label hidden>{{$cont_uno = 1}}</label>
                                     <a class="btn btn-default" role="button" data-toggle="collapse"
-                                        href="#archivosConsulta" aria-expanded="false" aria-controls="archivosConsulta">
+                                        href="#archivosConsulta{{$cont}}" aria-expanded="false" aria-controls="archivosConsulta{{$cont}}">
                                         Ver archivos adjuntos
                                     </a>
-                                    <div class="collapse" id="archivosConsulta">
+                                    <div class="collapse" id="archivosConsulta{{$cont}}">
                                         @foreach($consulta_response->files as $file)
                                         <a href="{{Storage::url($file)}}" target="_blank">
                                             <button class="btn btn-default">Adjunto {{$cont_uno++}}</button>

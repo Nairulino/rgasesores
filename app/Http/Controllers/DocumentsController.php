@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Documents;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Http\Request;
@@ -9,6 +10,7 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Log;
 
 class DocumentsController extends Controller
 {
@@ -32,6 +34,7 @@ class DocumentsController extends Controller
     {
         $documents = DB::table('documents')
                         ->join('users', 'documents.id_user', '=', 'users.id')
+                        ->select('documents.*','users.name')
                         ->paginate(7);
 
         return view('pages.documents', ['documents' => $documents]);
@@ -75,7 +78,7 @@ class DocumentsController extends Controller
      */
     public function download($id)
     {
-        $file = DB::select('select path from documents where id_doc = ?', [$id]);
+        $file = DB::select('select path from documents where id = ?', [$id]);
 
         return Storage::download($file[0]->path);
     }
@@ -87,7 +90,7 @@ class DocumentsController extends Controller
      */
     public function show($id)
     {
-        $file = DB::select('select path from documents where id_doc = ?', [$id]);
+        $file = DB::select('select path from documents where id = ?', [$id]);
 
         return Storage::response($file[0]->path);
     }
@@ -137,6 +140,16 @@ class DocumentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $document = Documents::find($id);
+        Storage::delete($document->path);
+        $document->delete();
+        Log::debug('El archivo se ha borrado correctamente');
+
+        $documents = DB::table('documents')
+                        ->join('users', 'documents.id_user', '=', 'users.id')
+                        ->paginate(7);
+
+        return view('pages.documents', ['documents' => $documents]);
     }
 }

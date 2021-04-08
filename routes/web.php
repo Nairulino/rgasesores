@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/app', 'WelcomeController@login')->name('app');
 Route::get('/users', 'UserController@index')->name('users');
 Route::get('search/users', 'UserController@search')->name('users.search');
-Route::get('search/personasfisicas', 'UserController@searchPersonasFisicas')->name('personasfisicas.search');
+Route::post('search/personasfisicas', 'UserController@searchPersonasFisicas')->name('personasfisicas.search');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/personasfisicas', 'UserController@show')->name('personasfisicas');
 Route::get('/updocument', 'DocumentsController@updocument')->name('updocument');

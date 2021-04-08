@@ -14,7 +14,7 @@ class CreateDocumentsTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->bigIncrements('id_doc')->unique();
+            $table->bigIncrements('id')->unique();
             $table->string('desc_doc');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users');

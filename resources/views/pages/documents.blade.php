@@ -29,6 +29,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Id Documento</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Usuario</th>
                                 <th scope="col">Fecha creación</th>
@@ -42,28 +43,48 @@
                             @foreach ($documents as $document)
                             <tr>
                                 <th scope="row">{{$cont++}} </th>
+                                <th scope="row">{{$document->id}}</th>
                                 <td>{{$document->desc_doc}} </td>
                                 <td>{{$document->name}} </td>
                                 <td>{{$document->created_at}}</td>
                                 <td>
                                     <div class="btn-list" style="display: flex">
-                                        <a href="{{route('documents.show', $document->id_doc)}}">
+                                        <a href="{{route('documents.show', $document->id)}}">
                                             <button type="button"
                                                 class="btn waves-effect waves-light btn-secondary pull-left ">Ver</button>
                                         </a>
-                                        <a href="{{route('documents.download', $document->id_doc)}}">
+                                        <a href="{{route('documents.download', $document->id)}}">
                                             <button type="button"
                                                 class="btn waves-effect waves-light btn-info">Descargar</button>
                                         </a>
-                                        <form action="{{-- {{route('users.destroy', $user->id)}} --}}" method="post">
-                                            {{-- {{ method_field('DELETE') }}
-                                            @csrf --}}
-                                            <button type="submit"
-                                                class="btn waves-effect waves-light btn-danger">Eliminar</button>
-                                        </form>
+                                        <button type="button" class="btn waves-effect waves-light btn-danger" data-toggle="modal" data-target="#destroy">Eliminar</button>
                                     </div>
                                 </td>
                             </tr>
+                            <!-- Modal Destroy Document-->
+                            <div class="modal fade" id="destroy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Eliminar Documento</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>¿Estás seguro que quieres eliminar el documento?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="{{route('documents.destroy', $document->id)}}" method="post">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                                {{ method_field('DELETE') }}
+                                                @csrf
+                                                <button type="submit"
+                                                    class="btn waves-effect waves-light btn-danger">Sí</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @endforeach
                         </tbody>
                     </table>
@@ -74,16 +95,4 @@
     </div>
     <!-- /.row -->
 </div>
-
-<script>
-    $(document).ready(function(){
-      $("#search").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#documents tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
-</script>
-
 @endsection
