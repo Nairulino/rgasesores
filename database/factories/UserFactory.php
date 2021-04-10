@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
 use Illuminate\Support\Str;
-use Faker\Generator as Faker;
+use Faker\Factory as Factory;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +16,17 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(User::class, function () {
+    $faker = Factory::create('es_ES');
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => Hash::make('pruebas1'),
         'remember_token' => Str::random(10),
+        'cif' => $faker->dni,
         'phone' => rand(111111111,999999999),
-        'description' => 'Descripción',
+        'description' => $faker->text,
         'img' => '/img/profile/default.png'
     ];
 });

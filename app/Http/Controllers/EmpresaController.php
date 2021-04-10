@@ -54,7 +54,13 @@ class EmpresaController extends Controller
      */
     public function searchEmpresas(Request $request)
     {
-        $empresas = DB::table('empresas')->where('name','like','%'.$request->search.'%')->paginate(7);
+        $empresas = DB::table('empresas')->where([
+            ['name','like','%'.$request->name.'%'],
+            ['email', 'like', '%'.$request->email.'%'],
+            ['user_name', 'like', '%'.$request->user_name.'%'],
+            ['phone', 'like', '%'.$request->phone.'%'],
+            ['cif', 'like', '%'.$request->cif.'%']
+            ])->paginate(7);
 
         return view('admin.clientes.empresas', ['empresas' => $empresas]);
     }

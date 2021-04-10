@@ -13,5 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(admin::class);
         $this->call(UserTableSeeder::class);
+        $this->call(SociedadesTableFactory::class);
+        $this->call(EmpresasTableFactory::class);
     }
 }

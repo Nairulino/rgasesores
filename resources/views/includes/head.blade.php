@@ -5,6 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="Nairulino">
     <link rel="icon" type="image/gif" sizes="16x16" href="img/Logo8x6mm.gif">
+    
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

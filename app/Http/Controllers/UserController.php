@@ -127,7 +127,8 @@ class UserController extends Controller
         $personas = DB::table('users')->where([
             ['name', 'like', '%'.$request->name.'%'],
             ['email', 'like', '%'.$request->email.'%'],
-            ['phone', 'like', '%'.$request->phone.'%']
+            ['phone', 'like', '%'.$request->phone.'%'],
+            ['cif', 'like', '%'.$request->cif.'%']
             ])->paginate(7);        
 
         return view('admin.clientes.personasfisicas', ['personas' => $personas]);

@@ -22,11 +22,31 @@
             <div class="white-box">
                 <h3 class="box-title">Personas físicas</h3>
                 <div class="box">
-                    <form action="{{route('personasfisicas.search')}}" method="POST" class="form-inline">
-                        @csrf
-                            <input id="name" name="name" type="text" placeholder="Nombre" class="form-control">
-                            <input type="email" name="email" class="form-control" placeholder="Email">
-                            <input type="phone" name="phone" class="form-control" max="9" placeholder="Teléfono">
+                    <form action="{{route('personasfisicas.search')}}" method="GET" class="form-inline" autocomplete="off">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></div>
+                                    <input name="name" type="text" class="form-control" placeholder="Nombre">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-at fa-fw" aria-hidden="true"></i></div>
+                                    <input type="text" name="email" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></div>
+                                    <input type="phone" name="phone" class="form-control" max="9" placeholder="Teléfono">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-barcode fa-fw" aria-hidden="true"></i></div>
+                                    <input type="cif" name="cif" class="form-control" max="9" placeholder="DNI">
+                                </div>
+                            </div>
                             
                             <button type="submit" class="btn waves-effect waves-light"><i class="fa fa-search"></i></button>
                         
@@ -41,6 +61,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">Teléfono</th>
+                                <th scoepe="col">DNI</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -51,21 +72,41 @@
                                 <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
                                 <td>{{$user->email}} </td>
                                 <td>{{$user->phone}}</td>
+                                <td>{{$user->cif}}</td>
                                 <td>
                                     <div class="btn-list" style="display: flex">
                                         <a href="{{route('users.edit', $user->id)}}">
                                             <button type="button"
                                                 class="btn waves-effect waves-light btn-secondary pull-left ">Modificar</button>
                                         </a>
-                                        <form action="{{route('users.destroy', $user->id)}}" method="post">
-                                            {{ method_field('DELETE') }}
-                                            @csrf
-                                            <button type="submit"
-                                                class="btn waves-effect waves-light btn-danger">Eliminar</button>
-                                        </form>
+                                        <button type="button" class="btn waves-effect waves-light btn-danger" data-toggle="modal" data-target="#destroy{{$user->id}}">Eliminar</button>
                                     </div>
                                 </td>
                             </tr>
+                            <!-- Modal Destroy Users-->
+                            <div class="modal fade" id="destroy{{$user->id}}" tabindex="-1" role="dialog" >
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Eliminar Persona física</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>¿Estás seguro que quieres eliminar al usuario?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="{{route('users.destroy', $user->id)}}" method="post">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                                {{ method_field('DELETE') }}
+                                                @csrf
+                                                <button type="submit"
+                                                    class="btn waves-effect waves-light btn-danger">Sí</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @endforeach
                         </tbody>
                     </table>

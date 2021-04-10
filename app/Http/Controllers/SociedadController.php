@@ -54,7 +54,13 @@ class SociedadController extends Controller
      */
     public function searchSociedades(Request $request)
     {
-        $sociedades = DB::table('sociedades')->where('name','like','%'.$request->search.'%')->paginate(7);
+        $sociedades = DB::table('sociedades')->where([
+            ['name','like','%'.$request->name.'%'],
+            ['email', 'like', '%'.$request->email.'%'],
+            ['user_name', 'like', '%'.$request->user_name.'%'],
+            ['phone', 'like', '%'.$request->phone.'%'],
+            ['cif', 'like', '%'.$request->cif.'%']
+            ])->paginate(7);
 
         return view('admin.clientes.sociedades', ['sociedades' => $sociedades]);
     }

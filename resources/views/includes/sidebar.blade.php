@@ -54,12 +54,10 @@
         <a href="{{route('consultas.index')}}" class="waves-effect"><i class="fa fa-book fa-fw"
             aria-hidden="true"></i>Consultas</a>
       </li>
-      @if(Auth::user()->admin != 1)
       <li>
         <a href="{{route('newConsulta')}}" class="waves-effect"><i class="fa fa-book fa-fw"
             aria-hidden="true"></i>Crear consulta</a>
       </li>
-      @endif
       <li>
         <a href="{{route('calendar')}}" class="waves-effect"><i class="fa fa-calendar fa-fw"
             aria-hidden="true"></i>Calendario</a>

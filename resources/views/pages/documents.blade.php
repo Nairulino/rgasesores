@@ -29,7 +29,6 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Id Documento</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Usuario</th>
                                 <th scope="col">Fecha creación</th>
@@ -43,7 +42,6 @@
                             @foreach ($documents as $document)
                             <tr>
                                 <th scope="row">{{$cont++}} </th>
-                                <th scope="row">{{$document->id}}</th>
                                 <td>{{$document->desc_doc}} </td>
                                 <td>{{$document->name}} </td>
                                 <td>{{$document->created_at}}</td>
@@ -57,12 +55,12 @@
                                             <button type="button"
                                                 class="btn waves-effect waves-light btn-info">Descargar</button>
                                         </a>
-                                        <button type="button" class="btn waves-effect waves-light btn-danger" data-toggle="modal" data-target="#destroy">Eliminar</button>
+                                        <button type="button" class="btn waves-effect waves-light btn-danger" data-toggle="modal" data-target="#destroy{{$document->id}}">Eliminar</button>
                                     </div>
                                 </td>
                             </tr>
                             <!-- Modal Destroy Document-->
-                            <div class="modal fade" id="destroy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal fade" id="destroy{{$document->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

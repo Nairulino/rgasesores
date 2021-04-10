@@ -20,30 +20,45 @@
         <form method='post' action="{{route('consultas.store')}}" class="form-horizontal form-material" autocomplete="off" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
-              <label class="col-md-12">Título de la consulta</label>
-              <div class="col-md-12">
-                  <input id="titulo" type="text" placeholder="Introduzca el título de la consulta..." name="titulo"
-                      class="form-control form-control-line @error('titulo') is-invalid @enderror" value="{{old('titulo')}}" required autofocus>
+            <label class="col-md-12">Título de la consulta</label>
+            <div class="col-md-12">
+              <input id="titulo" type="text" placeholder="Introduzca el título de la consulta..." name="titulo"
+                  class="form-control form-control-line @error('titulo') is-invalid @enderror" value="{{old('titulo')}}" required autofocus>
 
-                  @error('titulo')
-                  <span class="invalid-feedback" role="alert">
-                      {{ $message }}
-                  </span>
-                  @enderror
-              </div>
+              @error('titulo')
+              <span class="invalid-feedback" role="alert">
+                  {{ $message }}
+              </span>
+              @enderror
+            </div>
           </div>
           <div class="form-group">
-              <label class="col-md-12">¿Qué desea consultar?</label>
-              <div class="col-md-12">
-                  <textarea id="consulta" rows="5" class="form-control form-control-line @error('consulta') is-invalid @enderror"
-                      name="consulta" placeholder="Introduzca su consulta..." value="{{old('consulta')}}" required></textarea>
-
-                  @error('consulta')
-                  <span class="invalid-feedback" role="alert">
-                      {{ $message }}
-                  </span>
-                  @enderror
+            <label class="col-md-12">Cliente asociado a la consulta</label>
+            <div class="col-md-3">
+              <div class="input-group">
+                <input id="cliente" type="text" placeholder="Introduzca el cliente asociado..." name="cliente"
+                      class="form-control @error('cliente') is-invalid @enderror" value="{{old('cliente')}}" required autofocus>
+                <div data-toggle="modal" data-target="#search" class="input-group-addon"><i class="fa fa-search fa-fw" aria-hidden="true"></i></div>
               </div>
+              @error('cliente')
+              <span class="invalid-feedback" role="alert">
+                  {{ $message }}
+              </span>
+              @enderror
+            </div>
+        </div>
+          <div class="form-group">
+            <label class="col-md-12">¿Qué desea consultar?</label>
+            <div class="col-md-12">
+              <textarea id="consulta" rows="5" class="form-control form-control-line @error('consulta') is-invalid @enderror"
+                  name="consulta" placeholder="Introduzca su consulta..." value="{{old('consulta')}}" required></textarea>
+
+              @error('consulta')
+              <span class="invalid-feedback" role="alert">
+                  {{ $message }}
+              </span>
+              @enderror
+            </div>
           </div>
           <div class="form-group">
             <label class="col-md-12">¿Desea adjuntar algún archivo?</label>
@@ -62,4 +77,49 @@
       </div>
     </div>
   </div>
-  @endsection
+  <!-- Modal Show Users-->
+  <div class="modal fade" id="search" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="search">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Clientes registrados</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" method="get" class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></div>
+                        <input name="name" type="text" class="form-control" placeholder="Nombre Cliente">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn waves-effect waves-light"><i class="fa fa-search"></i></button>
+                </form>
+                <div class="card">
+                  
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Nombre Cliente</th>
+                        <th>Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach( $clientes as $cliente)
+                      <tr>
+                        <td>{{$cliente->name}}</td>
+                        <td><button class="btn btn-primary">Seleccionar</button></td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                  {{$clientes->links()}}
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

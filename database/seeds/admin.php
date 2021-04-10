@@ -17,6 +17,7 @@ class admin extends Seeder
             'name' => 'admin',
             'email' => 'admin@rgasesores.es',
             'password' => Hash::make('pruebas1'),
+            'cif' => '00000000A',
             'admin' => '1',
             'phone' => '666333999',
             'description' => 'Soy el administrador',

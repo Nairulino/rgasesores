@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/app', 'WelcomeController@login')->name('app');
 Route::get('/users', 'UserController@index')->name('users');
 Route::get('search/users', 'UserController@search')->name('users.search');
-Route::post('search/personasfisicas', 'UserController@searchPersonasFisicas')->name('personasfisicas.search');
+Route::get('search/personasfisicas', 'UserController@searchPersonasFisicas')->name('personasfisicas.search');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/personasfisicas', 'UserController@show')->name('personasfisicas');
 Route::get('/updocument', 'DocumentsController@updocument')->name('updocument');
@@ -34,6 +34,7 @@ Route::get('/documents/{user}/mydocs', 'DocumentsController@showMyDocs')->name('
 Route::resource('/users', 'UserController');
 Route::resource('/documents', 'DocumentsController');
 Route::resource('/upload', 'PostsController');
+Route::resource('/empresa', 'EmpresaController');
 
 
 
@@ -58,6 +59,6 @@ Route::get('/search/sociedades','SociedadController@searchSociedades')->name('so
 
 // Consultas
 Route::resource('/consultas', 'ConsultaController');
-Route::view('/create/consulta', 'consulta.create')->name('newConsulta');
+Route::get('/create/consulta', 'ConsultaController@create')->name('newConsulta');
 Route::get('/consulta/answer/{id}', 'ConsultaController@answer')->name('consultas.answer');
 Route::post('/consulta/response', 'ConsultaController@response')->name('consultas.response');

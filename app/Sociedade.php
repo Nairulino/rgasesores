@@ -12,6 +12,6 @@ class Sociedade extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'cif', 'phone', 'email','user_name', 'id_user'
+        'name', 'cif', 'phone', 'email', 'user_name', 'id_user'
     ];
 }

@@ -95,7 +95,9 @@ class ConsultaController extends Controller
      */
     public function create()
     {
-        return view('consulta.create');
+        $clientes = DB::table('users')->paginate(7);
+
+        return view('consulta.create',['clientes' => $clientes]);
     }
 
     /**
